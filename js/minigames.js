@@ -342,14 +342,14 @@ const MiniGames = (() => {
         let isSpinning = false;
 
         const options = [
-            'Uống trà sữa 🧋',
-            'Nghe nhạc chill 🎧',
+            'Cùng uống trà sữa 🧋',
+            'Nghe nhạc cùng tôi 🎧',
             'Ăn món bạn thích 🍕',
-            'Xem phim hài 🎬',
-            'Ngủ thêm 20 phút 😴',
-            'Đi dạo hóng gió 🍃',
-            'Tự khen mình 1 câu 🌟',
-            'Đọc vài trang sách 📖'
+            'Xem phim cùng nhau 🎬',
+            'Ôm nhau ngủ thêm 😴',
+            'Cùng đi dạo hóng gió 🍃',
+            'Nói yêu nhau một câu 💖',
+            'Tâm sự thâu đêm 🌙'
         ];
 
         const colors = [

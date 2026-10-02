@@ -11,31 +11,31 @@ const MoodTracker = (() => {
             label: 'Rất vui vẻ',
             emoji: '😊',
             color: '#f59e0b',
-            response: 'Tuyệt vời quá! Nụ cười rạng rỡ của bạn hôm nay chính là điều đẹp đẽ nhất. Hãy tận hưởng trọn vẹn niềm vui này và lan tỏa sự tích cực nhé! 🌟'
+            response: 'Thấy người yêu tôi vui là lòng tôi như nở hoa! Nụ cười rạng rỡ của bạn là điều tôi yêu nhất trên cõi đời này. Hãy tận hưởng trọn vẹn niềm hạnh phúc này nhé bạn yêu! 🌟'
         },
         tired: {
             label: 'Hơi mệt mỏi',
             emoji: '🥺',
             color: '#8b5cf6',
-            response: 'Hôm nay bạn đã cố gắng nhiều rồi. Đừng tạo áp lực cho mình nữa nha. Hãy tắm nước ấm, ăn một món thật ngon và cho phép bản thân nghỉ ngơi sớm nhé. Tôi luôn ở cạnh bạn! 🍵'
+            response: 'Người thương của tôi mệt rồi hả? Lại đây tôi ôm bạn một cái thật chặt nào! Tắm nước ấm, ăn món bạn thích và nghỉ ngơi sớm đi nhé. Mọi chuyện để tôi lo, tôi xót bạn lắm! 🍵'
         },
         calm: {
             label: 'An yên, nhẹ nhõm',
             emoji: '🍃',
             color: '#10b981',
-            response: 'Một ngày trôi qua thật êm đềm và thanh bình. Giữ lấy sự tĩnh lặng này trong lòng nhé, đó là liều thuốc quý giá nhất cho tâm hồn của bạn đấy. 🕊️'
+            response: 'Thật an yên khi biết bạn của tôi đang có một ngày nhẹ nhõm. Từng khoảnh khắc bình yên bên bạn là điều vô giá mà tôi luôn muốn gìn giữ suốt đời. 🕊️'
         },
         hug: {
             label: 'Cần một cái ôm',
             emoji: '🫂',
             color: '#f43f5e',
-            response: 'Gửi đến bạn một cái ôm thật chặt và ấm áp từ phương xa! Dù ngoài kia có lạnh lùng hay bão tố thế nào, bạn luôn là người bạn quan trọng và được tôi trân quý nhất. Bạn không hề một mình đâu nhé! 💕'
+            response: 'Tôi ôm bạn vào lòng thật chặt nè! Dù ngoài kia có bão giông hay lạnh lẽo thế nào, bạn luôn là người tôi yêu thương và trân quý nhất. Bạn mãi mãi không cô đơn vì có tôi ở đây rồi! 💕'
         },
         energetic: {
             label: 'Đầy năng lượng',
             emoji: '⚡',
             color: '#ea580c',
-            response: 'Ngọn lửa nhiệt huyết đang bùng cháy trong bạn! Hãy bắt tay vào làm những dự định bạn ấp ủ, tôi tin chắc hôm nay bạn sẽ gặt hái được những kết quả thật rực rỡ! 🚀'
+            response: 'Người tôi yêu hôm nay tuyệt vời quá! Ngọn lửa nhiệt huyết của bạn làm tôi say đắm. Cứ tự tin tiến bước nhé, tôi mãi là người hâm mộ trung thành và yêu bạn cuồng nhiệt nhất! 🚀'
         }
     };
 

@@ -1470,11 +1470,6 @@ a:focus-visible,
 
 /* ─── 5. TẬP PHIẾU QUÀ TẶNG ─── */
 .coupons-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px;
     margin-bottom: 24px;
     text-align: left;
 }
@@ -1487,66 +1482,226 @@ a:focus-visible,
 .coupons-desc {
     color: var(--c-text-muted);
     font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Vòng Quay May Mắn Nhận Phiếu */
+.voucher-wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.voucher-wheel-box {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+#voucher-wheel-canvas {
+    border-radius: 50%;
+    box-shadow: 0 8px 28px rgba(244, 63, 94, 0.25);
+    transform: translateZ(0);
+    display: block;
+}
+.btn-spin-love {
+    background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-size: 1.05rem;
+    font-weight: 700;
+    box-shadow: 0 4px 18px rgba(244, 63, 94, 0.35);
+    transition: var(--transition);
+}
+.btn-spin-love:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(244, 63, 94, 0.45);
+}
+.btn-spin-love:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Banner trúng phiếu */
+.voucher-result-banner {
+    margin-top: 20px;
+    max-width: 520px;
+    width: 100%;
+    animation: scaleUp 0.3s var(--ease-cozy);
+}
+.voucher-win-pill {
+    background: linear-gradient(135deg, #fff1f2 0%, #fffbeb 100%);
+    border: 2px solid #f43f5e;
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 6px 20px rgba(244, 63, 94, 0.18);
+    text-align: left;
+}
+.win-icon {
+    font-size: 2.6rem;
+    flex-shrink: 0;
+}
+.win-text-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.win-text-box strong {
+    font-size: 0.88rem;
+    color: #e11d48;
+}
+.win-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+.win-note {
+    font-size: 0.88rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* Vùng Ví Phiếu Tình Yêu */
+.love-wallet-container {
+    border-top: 2px dashed var(--c-card-border);
+    padding-top: 28px;
+    margin-top: 10px;
+}
+.wallet-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.wallet-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.wallet-icon {
+    font-size: 1.6rem;
+}
+.wallet-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--c-text-main);
 }
 .coupons-stat-badge {
     padding: 6px 14px;
-    background: var(--c-warm-peach-light);
-    color: var(--c-warm-peach-dark);
-    border: 1px solid var(--c-warm-peach-border);
+    background: var(--c-soft-pink-light);
+    color: var(--c-soft-pink-dark);
+    border: 1px solid var(--c-soft-pink-border);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     font-weight: 700;
     white-space: nowrap;
 }
+
+/* Lưới phiếu tình yêu */
 .coupons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 18px;
     margin-bottom: 24px;
 }
 .coupon-card {
     background: #ffffff;
     border-radius: var(--radius-md);
-    border: 2px dashed var(--c-warm-peach-border);
-    padding: 20px;
+    border: 2px solid var(--c-card-border);
     position: relative;
     cursor: pointer;
     transition: var(--transition);
     overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 .coupon-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
-    border-color: var(--c-warm-peach);
+}
+.coupon-left-deco {
+    width: 8px;
+    flex-shrink: 0;
+}
+.coupon-content {
+    padding: 16px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .coupon-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     margin-bottom: 8px;
 }
 .coupon-icon {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    flex-shrink: 0;
 }
 .coupon-title {
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--c-text-main);
+    margin-bottom: 2px;
+}
+.coupon-quantity-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0284c7;
+    background: #e0f2fe;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
 }
 .coupon-desc {
     font-size: 0.88rem;
     color: var(--c-text-muted);
     line-height: 1.5;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
-.coupon-badge {
-    font-size: 0.8rem;
+.coupon-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.btn-use-coupon {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--c-warm-peach-dark);
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transition);
+}
+.btn-use-coupon:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.35);
+}
+.coupon-badge-used {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #94a3b8;
+    font-style: italic;
 }
 .coupon-stamp {
     position: absolute;
@@ -1564,12 +1719,12 @@ a:focus-visible,
     transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: none;
     letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.9);
 }
 .coupon-card.is-used {
     background: #f8fafc;
-    border-style: solid;
     border-color: #cbd5e1;
-    opacity: 0.78;
+    opacity: 0.72;
 }
 .coupon-card.is-used .coupon-stamp {
     transform: rotate(-14deg) scale(1);
@@ -1633,6 +1788,20 @@ a:focus-visible,
     background: #1e253e;
     border-color: rgba(255, 255, 255, 0.1);
 }
+[data-theme="dark"] .voucher-win-pill {
+    background: linear-gradient(135deg, #2b1320 0%, #1e1b2e 100%);
+    border-color: #f43f5e;
+    box-shadow: 0 6px 20px rgba(244, 63, 94, 0.3);
+}
+[data-theme="dark"] .win-title {
+    color: #f8fafc;
+}
+[data-theme="dark"] .win-note {
+    color: #cbd5e1;
+}
+[data-theme="dark"] .love-wallet-container {
+    border-color: rgba(255, 255, 255, 0.15);
+}
 [data-theme="dark"] .coupon-card {
     background: #181e35;
     border-color: rgba(251, 146, 60, 0.3);
@@ -1649,6 +1818,7 @@ a:focus-visible,
     color: #f8fafc;
 }
 [data-theme="dark"] .coupon-stamp {
+    background: rgba(18, 22, 38, 0.95);
     color: #ef4444;
     border-color: #ef4444;
 }

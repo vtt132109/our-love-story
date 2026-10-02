@@ -9,19 +9,19 @@ const TamagotchiPlant = (() => {
     const STAGES = [
         {
             level: 1,
-            name: 'Hạt Mầm Bé Xinh',
+            name: 'Hạt Mầm Tình Yêu',
             emoji: '🌱',
             minExp: 0,
             maxExp: 40,
-            desc: 'Một hạt mầm vừa được gieo xuống từ tình bạn của hai đứa mình, đang mong chờ sự chăm sóc của bạn!'
+            desc: 'Một hạt mầm vừa được gieo xuống từ tình yêu của hai đứa mình, đang mong chờ sự chăm sóc ngọt ngào từ bạn!'
         },
         {
             level: 2,
-            name: 'Mầm Non Nhú Lá',
+            name: 'Mầm Xanh Nhú Lá',
             emoji: '🌿',
             minExp: 40,
             maxExp: 100,
-            desc: 'Cây đã nhú lên những chiếc lá non mơn mởn, khẽ đung đưa đón chào bạn ghé thăm mỗi ngày.'
+            desc: 'Mầm tình yêu đã nhú lên những chiếc lá non mơn mởn, khẽ đung đưa đón chào bạn ghé thăm mỗi ngày.'
         },
         {
             level: 3,
@@ -29,23 +29,23 @@ const TamagotchiPlant = (() => {
             emoji: '🌷',
             minExp: 100,
             maxExp: 180,
-            desc: 'Một nụ hoa xinh xắn đang chúm chím chờ ngày bung nở rạng rỡ nhất dưới ánh nắng!'
+            desc: 'Một nụ hoa xinh xắn đang chúm chím chờ ngày bung nở rạng rỡ nhất dưới ánh nắng tình yêu của hai đứa mình!'
         },
         {
             level: 4,
-            name: 'Cây Hoa Nở Rộ Rực Rỡ',
+            name: 'Cây Tình Yêu Nở Rộ Rực Rỡ',
             emoji: '🌳🌸',
             minExp: 180,
             maxExp: 180,
-            desc: 'Tuyệt vời quá! Cây tình bạn của chúng ta đã nở hoa sum suê, tỏa ngát hương thơm và mang lại niềm an lành cho bạn!'
+            desc: 'Tuyệt vời quá! Cây tình yêu của bạn và tôi đã nở hoa sum suê, tỏa ngát hương thơm và là minh chứng cho tình yêu bền chặt của hai đứa mình!'
         }
     ];
 
     const COMPLIMENTS = [
-        'Cây cảm nhận được tình cảm ấm áp của bạn và vươn cao thêm một chút! ✨',
-        'Cây thì thầm: "Cảm ơn bạn đã luôn dịu dàng với tôi nhé!" 💖',
-        'Chiếc lá non khẽ reo vui khi nghe thấy lời khen của bạn! 🍃',
-        'Mỗi cử chỉ yêu thương của bạn là nguồn sống tuyệt vời nhất của cây đó! 🌸'
+        'Cây cảm nhận được tình yêu ngọt ngào của bạn và tôi nên vươn cao thêm một chút! ✨',
+        'Cây thì thầm: "Hạnh phúc nhất là được lớn lên trong tình yêu của hai bạn!" 💖',
+        'Tình yêu dịu dàng bạn dành cho tôi và cho cây chính là phép màu tuyệt vời nhất! 🌸',
+        'Chiếc lá khẽ đung đưa như đang mỉm cười chúc cho tình yêu của hai đứa mình mãi nồng nàn! 🍃'
     ];
 
     function getData() {

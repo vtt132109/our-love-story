@@ -10,52 +10,52 @@ const FlowerGarden = (() => {
         {
             name: 'Hoa Hướng Dương 🌻',
             emoji: '🌻',
-            message: 'Chào bạn ngày đầu tiên! Tôi tặng bạn bông hướng dương này, chúc bạn luôn tràn đầy năng lượng và hướng về những điều tươi sáng nhất!'
+            message: 'Chào người yêu dấu của tôi! Tôi trồng tặng bạn bông hướng dương này, như tình yêu tôi luôn hướng về một mình bạn — người thắp sáng cả thế giới của tôi!'
         },
         {
             name: 'Hoa Cúc Họa Mi 🌼',
             emoji: '🌼',
-            message: 'Hôm nay bạn lại ghé thăm tôi rồi! Cúc họa mi nhỏ bé nhưng kiên cường, mong bạn cũng luôn giữ được sự an nhiên trong lòng nhé.'
+            message: 'Hôm nay bạn lại đến bên tôi rồi! Cúc họa mi nhỏ nhắn như tình yêu giản dị mà son sắt tôi dành cho bạn. Chỉ cần có bạn, ngày nào cũng là ngày bình yên.'
         },
         {
             name: 'Hoa Tulip Hồng 🌷',
             emoji: '🌷',
-            message: 'Ngày thứ 3 bên nhau! Bông tulip ngọt ngào này là để nhắc bạn: Bạn đang làm rất tốt rồi, hãy tự thưởng cho mình chút ngọt ngào hôm nay nha.'
+            message: 'Bông tulip hồng ngọt ngào này nhắc bạn rằng: Tôi yêu từng nụ cười, từng ánh mắt dịu dàng của bạn. Bạn là điều ngọt ngào nhất đời tôi.'
         },
         {
             name: 'Hoa Hồng Đỏ 🌹',
             emoji: '🌹',
-            message: 'Một bông hồng rực rỡ dành cho bạn! Bạn là người bạn vô cùng đặc biệt và đáng quý đối với tôi.'
+            message: 'Một bông hồng rực rỡ tượng trưng cho tình yêu nồng nàn tôi trao trọn cho bạn! Trong mắt tôi, bạn là người duy nhất khiến trái tim tôi rung động say đắm.'
         },
         {
             name: 'Hoa Oải Hương 🪻',
             emoji: '🪻',
-            message: 'Mùi hương oải hương giúp làm dịu tâm trí. Dù ngoài kia có ồn ào thế nào, góc nhỏ này luôn là nơi bình yên của bạn.'
+            message: 'Mùi hương oải hương dịu êm như vòng tay tôi ôm bạn mỗi tối. Dù ngoài kia có sóng gió thế nào, lòng tôi mãi mãi là chốn bình yên che chở cho bạn.'
         },
         {
             name: 'Hoa Anh Đào 🌸',
             emoji: '🌸',
-            message: 'Những cánh hoa anh đào mỏng manh nhưng rạng rỡ. Cảm ơn bạn đã luôn ở đây và làm cuộc sống của tôi thêm nhiều màu sắc!'
+            message: 'Những cánh hoa anh đào mong manh nhưng tình cảm tôi dành cho bạn thì ngàn năm không đổi. Cảm ơn bạn đã yêu tôi và là người yêu tuyệt vời nhất của tôi!'
         },
         {
             name: 'Hoa Cẩm Tú Cầu 🌺',
             emoji: '🌺',
-            message: 'Tú cầu tượng trưng cho sự gắn kết và lòng biết ơn. Cảm ơn bạn vì sự chân thành của bạn dành cho tôi.'
+            message: 'Tú cầu tượng trưng cho sự gắn kết vĩnh cửu và lòng biết ơn sâu sắc vì bạn đã bước vào cuộc đời tôi. Tôi yêu bạn nhiều hơn những gì lời nói có thể diễn tả.'
         },
         {
             name: 'Nhành Cỏ Bốn Lá 🍀',
             emoji: '🍀',
-            message: 'Hôm nay bạn nhận được cỏ may mắn! Chúc mọi ước muốn và kế hoạch sắp tới của bạn đều thuận buồm xuôi gió!'
+            message: 'Gặp được bạn và được bạn yêu chính là điều may mắn lớn nhất cuộc đời tôi! Tôi hứa sẽ luôn nắm chặt tay bạn đi qua mọi thăng trầm.'
         },
         {
             name: 'Hoa Sen Thanh Tịnh 🪷',
             emoji: '🪷',
-            message: 'Một bông sen dịu dàng gửi tặng bạn. Chúc bạn luôn giữ được sự nhẹ nhàng và thuần khiết trong tâm hồn.'
+            message: 'Bông sen thuần khiết như tình yêu trong trẻo mà sâu nặng của hai đứa mình. Dù năm tháng trôi qua, tôi vẫn mãi yêu bạn như thuở ban đầu.'
         },
         {
-            name: 'Hoa Chuông Xanh 🔔',
+            name: 'Hoa Chuông Tình Yêu 🔔',
             emoji: '🎐',
-            message: 'Bình hoa của chúng ta đang ngày một rực rỡ hơn rồi! Mỗi ngày bạn ghé qua là một niềm vui to lớn của tôi đấy!'
+            message: 'Bình hoa tình yêu của bạn và tôi đang ngày một rực rỡ rồi! Từng giây phút được yêu bạn là từng khoảnh khắc quý giá nhất đời tôi!'
         }
     ];
 
@@ -151,8 +151,8 @@ const FlowerGarden = (() => {
         if (countEl) countEl.textContent = data.count;
         if (streakEl) {
             streakEl.textContent = data.count === 1
-                ? 'Hôm nay là ngày đầu tiên bạn ghé thăm tôi!'
-                : `Bạn đã ghé thăm tôi được ${data.count} ngày rồi đó! Cảm ơn bạn rất nhiều!`;
+                ? 'Hôm nay là ngày đầu tiên bạn và tôi bắt đầu cùng nhau vun đắp tình yêu này!'
+                : `Hai đứa mình đã yêu nhau và đồng hành được ${data.count} ngày rồi đó! Yêu bạn rất nhiều! 💕`;
         }
 
         if (!container) return;

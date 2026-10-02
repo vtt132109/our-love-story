@@ -4,11 +4,11 @@
 
 const Goodnight = (() => {
     const nightMessages = [
-        'Hôm nay bạn đã vất vả nhiều rồi. Hãy gác lại hết những âu lo, thở một hơi thật sâu và chìm vào giấc ngủ thật êm đềm nhé. Ngày mai sẽ là một ngày mới tràn ngập điều tốt lành đang chờ bạn!',
-        'Đêm đã khuya rồi, mắt bạn cũng mỏi rồi đúng không? Tắt màn hình, kéo chăn lên và thả lỏng toàn thân nào. Chúc bạn có những giấc mơ êm như mây trời nhé!',
-        'Dù hôm nay có chuyện gì xảy ra đi nữa, bạn cũng đã vượt qua một cách xuất sắc rồi. Hãy tự hào về bản thân và cho phép mình ngủ một giấc thật sâu nhé. Chúc bạn ngủ ngon!',
-        'Gửi đến bạn một chút bình yên và một cái ôm ấm áp từ phương xa. Mong mọi muộn phiền tan biến, chỉ còn lại sự an lành bên bạn đêm nay.',
-        'Nhắm mắt lại nào bạn ơi. Hãy để những vì sao ngoài cửa sổ trông chừng giấc ngủ cho bạn. Tôi chúc bạn một đêm bình yên tuyệt đối, mai thức dậy với nụ cười trên môi!'
+        'Hôm nay người thương của tôi đã vất vả nhiều rồi. Hãy gác lại hết âu lo, để tôi ôm bạn vào giấc ngủ thật êm đềm nhé. Trong tim tôi lúc nào cũng chỉ có bạn!',
+        'Đêm đã khuya rồi, mắt người yêu tôi cũng mỏi rồi đúng không? Tắt màn hình, kéo chăn ấm lên nào. Chúc bạn có những giấc mơ ngập tràn hoa thơm và hình bóng hai đứa mình nhé!',
+        'Dù hôm nay có mệt mỏi thế nào, bạn cũng đã làm rất tuyệt vời rồi. Tôi tự hào về bạn và yêu bạn nhiều lắm. Cho phép mình ngủ một giấc thật sâu trong sự chở che của tôi nhé. Yêu bạn!',
+        'Gửi đến người yêu dấu ngàn nụ hôn êm ái và một cái ôm siết thật chặt. Mong mọi muộn phiền tan biến, chỉ còn lại sự ấm áp và bình yên bên bạn đêm nay.',
+        'Nhắm mắt lại nào bạn yêu của tôi. Hãy để những vì sao đêm nay thay tôi trông chừng giấc ngủ cho bạn. Tôi chúc bạn ngủ thật ngon, mai thức dậy lại có tôi thương bạn thật nhiều!'
     ];
 
     let currentMsgIndex = 0;

@@ -4,14 +4,14 @@
 
 const CheerUp = (() => {
     const cheerAdvices = [
-        'Nếu hôm nay có điều gì làm bạn không vui, bạn cứ thở phào một cái rồi mỉm cười nhé. Mặt trời vẫn mọc, hoa vẫn nở, và tôi luôn ở đây để cổ vũ bạn!',
-        'Lời khuyên vàng hôm nay: Đừng để bản thân bị "héo úa" như cái cây thiếu nước! Hãy đứng dậy uống ngay một ly nước mát và vươn vai thư giãn 30 giây nha bạn.',
-        'Bạn không cần phải hoàn hảo 100% mọi lúc đâu. Chỉ cần hôm nay bạn đã cố gắng hết sức mình, dù kết quả thế nào thì đối với tôi bạn cũng đã rất tuyệt vời rồi!',
-        'Nếu thấy mệt quá thì hãy đi tìm một món gì đó ngọt ngào để ăn đi! Khoa học đã chứng minh đồ ngọt giúp não bộ tiết ra dopamine làm bạn vui hơn đấy!',
-        'Đừng so sánh nhịp sống của mình với ai khác cả. Mỗi bông hoa đều có mùa nở rộ của riêng nó, và bạn cũng đang tỏa sáng theo cách rất riêng của bạn!',
-        'Gặp chuyện khó giải quyết? Hãy chia nhỏ nó ra như ăn một chiếc bánh pizza vậy — ăn từng miếng nhỏ một, bạn sẽ thấy mọi thứ dễ dàng hơn nhiều.',
-        'Hôm nay bạn nhớ mỉm cười thật tươi nhé! Nụ cười của bạn có sức mạnh lan tỏa niềm vui đến cả những người xung quanh và cả tôi nữa đấy!',
-        'Cứ bình tĩnh mà sống, việc gì đến sẽ đến, việc gì qua sẽ qua. Mọi chuyện rồi sẽ đâu vào đấy thôi, tôi tin chắc ở bạn!'
+        'Nếu hôm nay có điều gì làm bạn phiền lòng, bạn cứ tựa vào vai tôi mà thở phào nhé. Dù thế nào đi nữa, tôi vẫn luôn ở đây yêu thương và chở che cho bạn!',
+        'Lời dặn của tôi dành cho người yêu: Đừng để bản thân héo úa nha bạn! Hãy uống ngay một ly nước mát, ăn một món bạn thích, tôi xót bạn lắm đấy!',
+        'Bạn không cần phải gồng mình hoàn hảo đâu. Trong mắt tôi, bạn đã là người tuyệt vời và đáng yêu nhất rồi. Cứ tự tin là chính mình nhé, có tôi thương bạn!',
+        'Nếu thấy mệt quá thì lại đây tôi ôm một cái nào! Một cái ôm ấm áp và một ly trà sữa ngọt ngào sẽ nạp đầy năng lượng cho người tôi yêu!',
+        'Đừng bận tâm những lời phán xét ngoài kia. Trong thế giới của hai đứa mình, bạn là bông hoa rực rỡ và quý giá nhất đời tôi!',
+        'Gặp chuyện khó giải quyết hả bạn yêu? Đừng lo, có tôi cùng bạn chia sẻ mọi điều. Hai đứa mình bên nhau thì không gì là không vượt qua được!',
+        'Hôm nay bạn nhớ mỉm cười thật tươi nhé! Nụ cười xinh đẹp của bạn là nguồn sáng lớn nhất sưởi ấm trái tim tôi mỗi ngày đấy!',
+        'Mọi chuyện rồi sẽ êm đẹp thôi người thương ơi. Dù ngày nắng hay ngày mưa, tôi mãi mãi là hậu phương vững chắc nhất của bạn!'
     ];
 
     let lastIndex = -1;
