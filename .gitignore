@@ -1,0 +1,28 @@
+# Dependency directories
+node_modules/
+
+# Temporary test scripts and video generators
+*.py
+*.js
+!js/app.js
+!js/flower-garden.js
+!js/goodnight.js
+!js/cheer-up.js
+!js/minigames.js
+
+# Temporary media and captures
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.webp
+audit_results.json
+
+# Local config & agents
+.agents/
+skills-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db

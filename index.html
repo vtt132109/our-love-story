@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Nhỏ Của Bạn & Tôi 🌸</title>
+    <meta name="description" content="Trang web nhỏ ấm áp dành cho bạn — mỗi ngày nở một bông hoa, chơi mini-game vui vẻ và nhận những lời chúc bình an.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Background Canvas Hiệu ứng lấp lánh nhẹ nhàng -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header chính -->
+    <header class="header">
+        <div class="header__container">
+            <div class="logo">
+                <span class="logo__icon">🌱</span>
+                <span class="logo__text">Bạn & Tôi</span>
+            </div>
+            <div class="header__actions">
+                <button id="btn-theme-toggle" class="pill-btn pill-btn--theme" type="button" aria-label="Chuyển chế độ tối hoặc sáng" title="Chuyển đổi giao diện Sáng / Tối">
+                    <span id="theme-toggle-icon" class="theme-icon">🌙</span>
+                    <span id="theme-toggle-label" class="theme-label">Tối</span>
+                </button>
+                <button id="btn-header-cheer" class="pill-btn pill-btn--sun" type="button" aria-label="Nhận lời khuyên vui vẻ">
+                    <span>Lời khuyên vui vẻ ☀️</span>
+                </button>
+                <button id="btn-header-night" class="pill-btn pill-btn--moon" type="button" aria-label="Chúc ngủ ngon">
+                    <span>Chúc ngủ ngon 🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- ══════════════ 1. BÌNH HOA NỞ MỖI NGÀY ══════════════ -->
+        <section class="card garden-section">
+            <div class="section-badge">💐 Bình hoa kỷ niệm của chúng ta</div>
+            <h1 class="garden-title">Mỗi Ngày Bạn Đến, Một Bông Hoa Nở</h1>
+            <p class="garden-desc">
+                Cứ mỗi ngày bạn ghé thăm góc nhỏ này, tôi sẽ trồng tặng bạn thêm một bông hoa mới. Hãy chạm vào từng bông hoa để đọc lời nhắn tôi gửi nhé!
+            </p>
+
+            <div class="garden-streak">
+                <div class="streak-badge">
+                    <span class="streak-icon">✨</span>
+                    <span id="streak-text">Hôm nay là ngày đầu tiên bạn ghé thăm tôi!</span>
+                </div>
+                <div class="streak-count-box">
+                    <span>Số hoa đã nở:</span>
+                    <strong id="flower-count">1</strong> 🌺
+                </div>
+            </div>
+
+            <!-- Khung bình hoa hiển thị trực quan -->
+            <div class="vase-wrapper">
+                <div id="flower-garden" class="flower-garden" aria-label="Bình hoa nở mỗi ngày">
+                    <!-- Các bông hoa sẽ tự động render vào đây -->
+                </div>
+                <div class="vase">
+                    <div class="vase-pattern">🌸 Bạn & Tôi 🌸</div>
+                </div>
+            </div>
+
+            <div class="garden-actions">
+                <button id="btn-water-today" class="btn-primary" type="button">
+                    <span>Tưới hoa hôm nay</span>
+                    <span class="btn-icon">💧</span>
+                </button>
+                <button id="btn-demo-next-day" class="btn-secondary" type="button" title="Thử nghiệm thêm ngày mới để xem hoa nở thêm">
+                    <span>Ghé ngày tiếp theo (Thử nghiệm) ✨</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ══════════════ 2. HAI NÚT BẤM CHỮA LÀNH ĐẶC BIỆT ══════════════ -->
+        <section class="healing-buttons-section">
+            <div class="healing-card healing-card--sun" id="card-trigger-cheer">
+                <div class="healing-icon">☀️</div>
+                <div class="healing-info">
+                    <h2>Cần Một Lời Khuyên Vui Vẻ?</h2>
+                    <p>Bấm vào đây mỗi khi bạn thấy mệt mỏi, tôi có những lời khuyên dí dỏm và nụ cười dành riêng cho bạn!</p>
+                </div>
+                <button id="btn-open-cheer" class="btn-action btn-action--sun" type="button">
+                    Nhận năng lượng ngay 🌻
+                </button>
+            </div>
+
+            <div class="healing-card healing-card--moon" id="card-trigger-night">
+                <div class="healing-icon">🌙</div>
+                <div class="healing-info">
+                    <h2>Chuẩn Bị Đi Ngủ Chưa?</h2>
+                    <p>Hãy để tôi gửi đến bạn một cái ôm dịu êm, một bầu trời đầy sao và lời chúc bạn ngủ thật ngoan.</p>
+                </div>
+                <button id="btn-open-night" class="btn-action btn-action--moon" type="button">
+                    Chúc bạn ngủ ngon 💫
+                </button>
+            </div>
+        </section>
+
+        <!-- ══════════════ 3. GÓC TRÒ CHƠI MINI-GAMES VUI VẺ ══════════════ -->
+        <section class="card games-section">
+            <div class="section-badge">🎮 Giải trí một chút nhé</div>
+            <h2 class="games-title">Góc Trò Chơi Nhỏ Dành Cho Bạn</h2>
+            <p class="games-desc">Thư giãn đầu óc với vài trò chơi đơn giản và nhẹ nhàng tôi làm cho bạn nè!</p>
+
+            <!-- Navigation Tabs cho Mini-games -->
+            <div class="game-tabs" role="tablist">
+                <button class="game-tab active" data-tab="game-catch" role="tab" aria-selected="true" type="button">
+                    🌸 Hái Hoa Rơi
+                </button>
+                <button class="game-tab" data-tab="game-memory" role="tab" aria-selected="false" type="button">
+                    🃏 Lật Thẻ Tìm Cặp
+                </button>
+                <button class="game-tab" data-tab="game-wheel" role="tab" aria-selected="false" type="button">
+                    🎡 Vòng Quay Niềm Vui
+                </button>
+            </div>
+
+            <!-- Tab 1: Game Hái Hoa Rơi -->
+            <div id="game-catch" class="game-panel active" role="tabpanel">
+                <div class="game-header">
+                    <p class="game-instruction">Dùng chuột hoặc ngón tay di chuyển chiếc giỏ để hứng các bông hoa rơi nhé!</p>
+                    <div class="game-stats">
+                        <span>Điểm của bạn: <strong id="catch-score">0</strong></span>
+                        <span>Kỷ lục: <strong id="catch-highscore">0</strong></span>
+                    </div>
+                </div>
+                <div class="catch-canvas-wrapper">
+                    <canvas id="catch-canvas" width="600" height="380"></canvas>
+                    <div id="catch-overlay" class="game-overlay">
+                        <p class="overlay-msg">Sẵn sàng hái hoa chưa bạn ơi?</p>
+                        <button id="btn-start-catch" class="btn-primary" type="button">Bắt đầu chơi ngay 🌸</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Game Lật Thẻ Tìm Cặp -->
+            <div id="game-memory" class="game-panel" role="tabpanel" hidden>
+                <div class="game-header">
+                    <p class="game-instruction">Lật mở từng thẻ bài để tìm các cặp hoa quả và đồ vật giống nhau!</p>
+                    <div class="game-stats">
+                        <span>Số lượt lật: <strong id="memory-moves">0</strong></span>
+                        <span>Đã tìm thấy: <strong id="memory-matches">0</strong> / 6 cặp</span>
+                    </div>
+                </div>
+                <div id="memory-grid" class="memory-grid">
+                    <!-- Thẻ bài render bằng JS -->
+                </div>
+                <div class="game-footer">
+                    <button id="btn-reset-memory" class="btn-secondary" type="button">Chơi lại ván mới 🔄</button>
+                </div>
+            </div>
+
+            <!-- Tab 3: Game Vòng Quay Niềm Vui -->
+            <div id="game-wheel" class="game-panel" role="tabpanel" hidden>
+                <div class="game-header">
+                    <p class="game-instruction">Hôm nay làm gì cho vui nhỉ? Hãy quay để nhận một gợi ý nhỏ từ tôi nhé!</p>
+                </div>
+                <div class="wheel-box">
+                    <div class="wheel-pointer">🔻</div>
+                    <canvas id="joy-wheel-canvas" width="320" height="320"></canvas>
+                    <button id="btn-spin-joy" class="btn-primary btn-spin" type="button">Quay ngẫu nhiên ✨</button>
+                </div>
+                <div id="wheel-result-box" class="wheel-result-box" hidden>
+                    <span class="wheel-result-badge">Gợi ý dành cho bạn hôm nay:</span>
+                    <p id="wheel-result-text" class="wheel-result-text"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer ấm áp -->
+    <footer class="footer">
+        <p>Góc nhỏ được tạo ra dành riêng cho bạn — Chúc bạn luôn an yên và vui tươi mỗi ngày! 🌿💖</p>
+    </footer>
+
+    <!-- ══════════════ MODALS / POPUPS ══════════════ -->
+
+    <!-- 1. Modal Chúc Ngủ Ngon -->
+    <div id="modal-night" class="modal modal--night" hidden>
+        <div class="modal__backdrop" id="night-backdrop"></div>
+        <div class="modal__dialog modal__dialog--night">
+            <button class="modal__close" id="btn-close-night" type="button" aria-label="Đóng">&times;</button>
+            <div class="night-moon">🌙</div>
+            <h2 class="night-title">Chúc Bạn Ngủ Thật Ngon</h2>
+            <div class="night-stars">✨ 🌟 💫 🌟 ✨</div>
+            <p id="night-message" class="night-message">
+                Hôm nay bạn đã vất vả nhiều rồi. Hãy gác lại hết những âu lo, thở một hơi thật sâu và chìm vào giấc ngủ thật êm đềm nhé. Ngày mai sẽ là một ngày mới tràn ngập điều tốt lành đang chờ bạn!
+            </p>
+            <div class="night-card-footer">
+                <button id="btn-another-night-msg" class="btn-secondary btn-secondary--night" type="button">
+                    Đổi lời chúc khác 📖
+                </button>
+                <button id="btn-sleep-tight" class="btn-primary btn-primary--night" type="button">
+                    Tôi đi ngủ đây, cảm ơn bạn 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Modal Lời Khuyên Vui Vẻ -->
+    <div id="modal-cheer" class="modal modal--cheer" hidden>
+        <div class="modal__backdrop" id="cheer-backdrop"></div>
+        <div class="modal__dialog modal__dialog--cheer">
+            <button class="modal__close" id="btn-close-cheer" type="button" aria-label="Đóng">&times;</button>
+            <div class="cheer-sun">🌻</div>
+            <span class="cheer-tag">Nạp năng lượng cho bạn</span>
+            <p id="cheer-message" class="cheer-message">
+                Nếu hôm nay có gì không như ý, bạn hãy cứ thở phào một cái rồi mỉm cười nhé. Mặt trời vẫn mọc, hoa vẫn nở, và tôi luôn ở đây để cổ vũ bạn!
+            </p>
+            <div class="cheer-actions">
+                <button id="btn-more-cheer" class="btn-primary" type="button">Cho tôi thêm lời khuyên khác ☀️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Modal Lời Nhắn Của Từng Bông Hoa -->
+    <div id="modal-flower" class="modal modal--flower" hidden>
+        <div class="modal__backdrop" id="flower-backdrop"></div>
+        <div class="modal__dialog modal__dialog--flower">
+            <button class="modal__close" id="btn-close-flower" type="button" aria-label="Đóng">&times;</button>
+            <div id="flower-modal-icon" class="flower-modal-icon">🌺</div>
+            <h3 id="flower-modal-title" class="flower-modal-title">Bông hoa ngày 1</h3>
+            <p id="flower-modal-text" class="flower-modal-text">Lời nhắn gửi đến bạn...</p>
+            <button id="btn-close-flower-btn" class="btn-primary" type="button">Đã đọc rồi nè 💕</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/flower-garden.js"></script>
+    <script src="js/goodnight.js"></script>
+    <script src="js/cheer-up.js"></script>
+    <script src="js/minigames.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
