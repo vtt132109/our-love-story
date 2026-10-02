@@ -27,6 +27,9 @@
                     <span id="theme-toggle-icon" class="theme-icon">🌙</span>
                     <span id="theme-toggle-label" class="theme-label">Tối</span>
                 </button>
+                <button id="btn-header-ambient" class="pill-btn pill-btn--ambient" type="button" aria-label="Bật hộp âm thanh bình yên">
+                    <span>Âm thanh 🎵</span>
+                </button>
                 <button id="btn-header-cheer" class="pill-btn pill-btn--sun" type="button" aria-label="Nhận lời khuyên vui vẻ">
                     <span>Lời khuyên vui vẻ ☀️</span>
                 </button>
@@ -101,9 +104,131 @@
                     Chúc bạn ngủ ngon 💫
                 </button>
             </div>
+        <!-- ══════════════ 3. CHẬU CÂY THẦN KỲ CỦA BẠN & TÔI ══════════════ -->
+        <section class="card plant-section">
+            <div class="section-badge">🌱 Chậu cây tình bạn</div>
+            <div class="plant-header">
+                <div>
+                    <h2 class="plant-title">Chậu Cây Thần Kỳ Của Chúng Ta</h2>
+                    <p class="plant-desc">
+                        Mỗi ngày ghé thăm, bạn hãy dành chút thời gian tưới nước, sưởi nắng và khen ngợi để cây lớn dần và nở hoa rực rỡ nhé!
+                    </p>
+                </div>
+                <span id="plant-level-badge" class="plant-level-badge">Cấp 1</span>
+            </div>
+
+            <div class="plant-display">
+                <div id="plant-avatar" class="plant-avatar" aria-label="Hình dáng chậu cây">🌱</div>
+                <h3 id="plant-stage-name" class="plant-stage-name">Hạt Mầm Bé Xinh</h3>
+                <p id="plant-stage-desc" class="plant-stage-desc">Đang mong chờ sự chăm sóc ngọt ngào từ bạn...</p>
+                <div class="plant-exp-bar-wrapper">
+                    <div class="plant-exp-bar">
+                        <div id="plant-exp-fill" class="plant-exp-fill" style="width: 20%;"></div>
+                    </div>
+                    <span id="plant-exp-text" class="plant-exp-text">15 / 40 Điểm</span>
+                </div>
+            </div>
+
+            <div class="plant-stats-grid">
+                <div class="plant-stat-box">
+                    <span class="stat-icon">💧</span>
+                    <span class="stat-name">Độ ẩm:</span>
+                    <strong id="val-water">50%</strong>
+                </div>
+                <div class="plant-stat-box">
+                    <span class="stat-icon">☀️</span>
+                    <span class="stat-name">Ánh nắng:</span>
+                    <strong id="val-sun">50%</strong>
+                </div>
+                <div class="plant-stat-box">
+                    <span class="stat-icon">💖</span>
+                    <span class="stat-name">Yêu thương:</span>
+                    <strong id="val-love">50%</strong>
+                </div>
+            </div>
+
+            <div class="plant-actions">
+                <button id="btn-plant-water" class="btn-action-plant btn-action-plant--water" type="button">
+                    <span>Tưới nước</span> 💧
+                </button>
+                <button id="btn-plant-sun" class="btn-action-plant btn-action-plant--sun" type="button">
+                    <span>Tắm nắng</span> ☀️
+                </button>
+                <button id="btn-plant-love" class="btn-action-plant btn-action-plant--love" type="button">
+                    <span>Khen ngợi</span> 💖
+                </button>
+            </div>
+            <p id="plant-status-msg" class="plant-status-msg"></p>
         </section>
 
-        <!-- ══════════════ 3. GÓC TRÒ CHƠI MINI-GAMES VUI VẺ ══════════════ -->
+        <!-- ══════════════ 4. NHẬT KÝ CẢM XÚC HÔM NAY ══════════════ -->
+        <section class="card mood-section">
+            <div class="section-badge">💖 Lắng nghe tâm sự</div>
+            <h2 class="mood-title">Hôm Nay Bạn Cảm Thấy Thế Nào?</h2>
+            <p class="mood-desc">
+                Dù bạn đang vui vẻ hay có chút mệt mỏi, hãy chọn một biểu tượng để tôi được gửi gắm lời vỗ về ấm áp đến bạn nhé!
+            </p>
+
+            <div class="mood-selector" role="group" aria-label="Chọn tâm trạng hôm nay">
+                <button class="mood-btn" data-mood="happy" type="button">
+                    <span class="mood-emoji">😊</span>
+                    <span class="mood-name">Rất vui vẻ</span>
+                </button>
+                <button class="mood-btn" data-mood="tired" type="button">
+                    <span class="mood-emoji">🥺</span>
+                    <span class="mood-name">Hơi mệt mỏi</span>
+                </button>
+                <button class="mood-btn" data-mood="calm" type="button">
+                    <span class="mood-emoji">🍃</span>
+                    <span class="mood-name">An yên, nhẹ nhõm</span>
+                </button>
+                <button class="mood-btn" data-mood="hug" type="button">
+                    <span class="mood-emoji">🫂</span>
+                    <span class="mood-name">Cần cái ôm</span>
+                </button>
+                <button class="mood-btn" data-mood="energetic" type="button">
+                    <span class="mood-emoji">⚡</span>
+                    <span class="mood-name">Đầy năng lượng</span>
+                </button>
+            </div>
+
+            <div id="mood-response-box" class="mood-response-box" hidden>
+                <div class="mood-res-header">
+                    <span id="mood-res-emoji" class="mood-res-emoji">💖</span>
+                    <span class="mood-res-tag">Lời nhắn riêng dành cho bạn hôm nay:</span>
+                </div>
+                <p id="mood-res-text" class="mood-res-text"></p>
+            </div>
+
+            <div class="mood-history-wrapper">
+                <span class="history-label">Lịch sử cảm xúc các ngày gần đây:</span>
+                <div id="mood-history-list" class="mood-history-list"></div>
+            </div>
+        </section>
+
+        <!-- ══════════════ 5. TẬP PHIẾU QUÀ TẶNG "BẠN & TÔI" ══════════════ -->
+        <section class="card coupons-section">
+            <div class="section-badge">🎟️ Đặc quyền tình bạn</div>
+            <div class="coupons-header-row">
+                <div>
+                    <h2 class="coupons-title">Tập Phiếu Quà Tặng Dành Cho Bạn</h2>
+                    <p class="coupons-desc">Những tấm vé đặc quyền mà bạn có thể "rút ví" yêu cầu tôi thực hiện bất kỳ lúc nào!</p>
+                </div>
+                <div class="coupons-stat-badge">
+                    <span id="coupons-stat-count">6 / 6 phiếu còn hạn</span>
+                </div>
+            </div>
+
+            <div id="coupons-grid" class="coupons-grid">
+                <!-- Render bằng JS -->
+            </div>
+
+            <div class="coupons-footer-actions">
+                <button id="btn-reset-coupons" class="btn-secondary" type="button">Làm mới lại toàn bộ phiếu 🔄</button>
+            </div>
+        </section>
+
+        <!-- ══════════════ 6. GÓC TRÒ CHƠI MINI-GAMES VUI VẺ ══════════════ -->
         <section class="card games-section">
             <div class="section-badge">🎮 Giải trí một chút nhé</div>
             <h2 class="games-title">Góc Trò Chơi Nhỏ Dành Cho Bạn</h2>
@@ -232,10 +357,51 @@
         </div>
     </div>
 
+    <!-- 4. Modal Hộp Âm Thanh Bình Yên -->
+    <div id="modal-ambient" class="modal modal--ambient" hidden>
+        <div class="modal__backdrop" id="ambient-backdrop"></div>
+        <div class="modal__dialog modal__dialog--ambient">
+            <button class="modal__close" id="btn-close-ambient" type="button" aria-label="Đóng">&times;</button>
+            <div class="ambient-header-icon">🎵</div>
+            <h2 class="ambient-title">Hộp Âm Thanh Bình Yên</h2>
+            <p class="ambient-subtitle">Chọn một âm thanh tự nhiên để xoa dịu tâm trí và giúp bạn thư giãn nhé.</p>
+            <div class="ambient-grid">
+                <button class="ambient-btn" data-sound="rain" type="button" aria-pressed="false">
+                    <span class="ambient-icon">🌧️</span>
+                    <span class="ambient-name">Mưa Rào Dịu Êm</span>
+                </button>
+                <button class="ambient-btn" data-sound="fire" type="button" aria-pressed="false">
+                    <span class="ambient-icon">🪵</span>
+                    <span class="ambient-name">Lò Sưởi Ấm Áp</span>
+                </button>
+                <button class="ambient-btn" data-sound="waves" type="button" aria-pressed="false">
+                    <span class="ambient-icon">🌊</span>
+                    <span class="ambient-name">Sóng Biển Rì Rào</span>
+                </button>
+                <button class="ambient-btn" data-sound="crickets" type="button" aria-pressed="false">
+                    <span class="ambient-icon">🌙</span>
+                    <span class="ambient-name">Đêm Hè Thanh Bình</span>
+                </button>
+            </div>
+            <p id="ambient-status-text" class="ambient-status">Chọn một âm thanh để bật cảm giác bình yên...</p>
+            <div class="ambient-controls">
+                <div class="volume-slider-group">
+                    <label for="ambient-volume">Âm lượng:</label>
+                    <input type="range" id="ambient-volume" min="0" max="1" step="0.05" value="0.5" aria-label="Âm lượng nhạc nền">
+                </div>
+                <button id="btn-stop-ambient" class="btn-secondary" type="button">Tắt âm thanh 🔇</button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
     <script src="js/flower-garden.js"></script>
     <script src="js/goodnight.js"></script>
     <script src="js/cheer-up.js"></script>
+    <script src="js/ambient-sound.js"></script>
+    <script src="js/tamagotchi-plant.js"></script>
+    <script src="js/friendship-coupons.js"></script>
+    <script src="js/mood-tracker.js"></script>
     <script src="js/minigames.js"></script>
     <script src="js/app.js"></script>
 </body>

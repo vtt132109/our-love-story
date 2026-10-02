@@ -55,3 +55,22 @@
   - Hệ màu ban đêm Sapphire/Indigo huyền diệu, tương phản cao, bảo vệ mắt.
   - Tự động lưu lựa chọn của người dùng vào `localStorage` (`cozy_theme_preference`) và đồng bộ theo cài đặt hệ điều hành (`prefers-color-scheme`).
   - Hạt bokeh nền canvas tự động chuyển đổi sang ánh sao đêm lấp lánh khi bật chế độ tối.
+
+---
+
+## 🌟 4. Các Tính Năng Mới Bổ Sung (Vừa Hoàn Thành)
+- [x] **Hộp Âm Thanh Bình Yên (Web Audio API Synthesizer):**
+  - Tổng hợp 4 âm thanh thư giãn tự nhiên trực tiếp trên trình duyệt (Mưa rào dịu êm 🌧️, Lò sưởi ấm áp 🪵, Sóng biển rì rào 🌊, Đêm hè thanh bình 🌙).
+  - Không tốn băng thông, không phụ thuộc file MP3 ngoài, có thanh chỉnh âm lượng trực quan.
+- [x] **Chậu Cây Thần Kỳ (Tamagotchi Mini-Plant):**
+  - Trải nghiệm nuôi dưỡng mầm cây tình bạn: Tưới nước 💧, Tắm nắng ☀️, Khen ngợi 💖.
+  - Tích lũy điểm kinh nghiệm để lớn dần qua 4 giai đoạn (*Hạt mầm $\rightarrow$ Mầm non $\rightarrow$ Chồi hoa $\rightarrow$ Cây hoa đại thụ nở rực rỡ*).
+- [x] **Nhật Ký Cảm Xúc Mỗi Ngày (Daily Mood Tracker):**
+  - Lắng nghe và vỗ về tâm trạng hôm nay (*Rất vui, Hơi mệt, An yên, Cần cái ôm, Đầy năng lượng*).
+  - Gửi gắm những lời nhắn chữa lành riêng biệt và lưu lịch sử cảm xúc 7 ngày gần nhất.
+- [x] **Tập Phiếu Quà Tặng "Bạn & Tôi" (Friendship Coupons):**
+  - 6 tấm vé đặc quyền ngọt ngào (Miễn trừ giận dỗi, Trà sữa full topping, Lắng nghe thâu đêm, Đi ăn món thích nhất, Xoa đầu thư giãn, Ước gì được nấy).
+  - Hiệu ứng đóng dấu "ĐÃ DÙNG" đỏ chót kèm âm thanh sống động và lưu trạng thái vào `localStorage`.
+- [x] **Vệt Chuột Nở Hoa & Lấp Lánh (Interactive Petal & Sparkle Trail):**
+  - Tự động sinh vệt cánh hoa anh đào và ánh sao li ti khi di chuột hoặc lướt cảm ứng, đạt chuẩn 60FPS không giật lag.
+

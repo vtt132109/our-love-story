@@ -1071,6 +1071,588 @@ a:focus-visible,
     background: #283152;
 }
 
+/* ─── 4. PILL BTN AMBIENT ─── */
+.pill-btn--ambient {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+.pill-btn--ambient:hover {
+    background: #a7f3d0;
+    transform: translateY(-1px);
+}
+
+/* ─── MODAL AMBIENT ─── */
+.modal__dialog--ambient {
+    max-width: 480px;
+    text-align: center;
+}
+.ambient-header-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+.ambient-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin-bottom: 6px;
+}
+.ambient-subtitle {
+    font-size: 0.92rem;
+    color: var(--c-text-muted);
+    margin-bottom: 20px;
+}
+.ambient-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.ambient-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    border-radius: var(--radius-md);
+    background: var(--c-bg-subtle);
+    border: 2px solid var(--c-card-border);
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transition);
+}
+.ambient-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--c-warm-peach);
+    background: #fff7ed;
+}
+.ambient-btn.active {
+    background: linear-gradient(135deg, var(--c-warm-peach-light), var(--c-soft-pink-light));
+    border-color: var(--c-warm-peach-dark);
+    box-shadow: 0 4px 14px rgba(251, 146, 60, 0.25);
+}
+.ambient-icon {
+    font-size: 1.8rem;
+}
+.ambient-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+}
+.ambient-status {
+    font-size: 0.88rem;
+    color: var(--c-warm-peach-dark);
+    font-weight: 600;
+    margin-bottom: 16px;
+    min-height: 22px;
+}
+.ambient-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+.volume-slider-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--c-text-muted);
+}
+.volume-slider-group input[type="range"] {
+    accent-color: var(--c-warm-peach);
+    cursor: pointer;
+}
+
+/* ─── 3. CHẬU CÂY THẦN KỲ ─── */
+.plant-section {
+    text-align: center;
+}
+.plant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.plant-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+}
+.plant-level-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--c-leaf-green-light);
+    color: var(--c-leaf-green-dark);
+    border: 1px solid var(--c-leaf-green-border);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.plant-desc {
+    color: var(--c-text-muted);
+    font-size: 0.98rem;
+    max-width: 600px;
+    margin-bottom: 24px;
+}
+.plant-display {
+    padding: 24px;
+    background: var(--c-bg-subtle);
+    border: 1px solid var(--c-card-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    position: relative;
+}
+.plant-avatar {
+    font-size: 4rem;
+    margin-bottom: 8px;
+    display: inline-block;
+    transition: transform 0.25s ease;
+    cursor: default;
+}
+.plant-avatar.plant-bounce {
+    animation: plantBounce 0.45s var(--ease-cozy);
+}
+@keyframes plantBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3) rotate(6deg); }
+}
+.plant-stage-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin-bottom: 4px;
+}
+.plant-stage-desc {
+    font-size: 0.92rem;
+    color: var(--c-text-muted);
+    margin-bottom: 14px;
+}
+.plant-exp-bar-wrapper {
+    max-width: 380px;
+    margin: 0 auto;
+}
+.plant-exp-bar {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+.plant-exp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--c-leaf-green), var(--c-warm-peach));
+    border-radius: var(--radius-full);
+    transition: width 0.4s ease;
+}
+.plant-exp-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--c-text-muted);
+}
+.plant-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.plant-stat-box {
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid var(--c-card-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.stat-name {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+}
+.plant-stat-box strong {
+    font-size: 1.1rem;
+    color: var(--c-text-main);
+}
+.plant-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+.btn-action-plant {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-action-plant--water {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+.btn-action-plant--water:hover {
+    background: #bae6fd;
+    transform: translateY(-2px);
+}
+.btn-action-plant--sun {
+    background: var(--c-sun-yellow-light);
+    color: var(--c-sun-yellow-dark);
+    border: 1px solid var(--c-sun-yellow-border);
+}
+.btn-action-plant--sun:hover {
+    background: var(--c-sun-yellow-border);
+    transform: translateY(-2px);
+}
+.btn-action-plant--love {
+    background: var(--c-soft-pink-light);
+    color: var(--c-soft-pink-dark);
+    border: 1px solid var(--c-soft-pink-border);
+}
+.btn-action-plant--love:hover {
+    background: var(--c-soft-pink-border);
+    transform: translateY(-2px);
+}
+.plant-status-msg {
+    min-height: 24px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--c-warm-peach-dark);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.plant-status-msg.fade {
+    opacity: 1;
+}
+.plant-pop-item {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 1.6rem;
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── 4. NHẬT KÝ CẢM XÚC ─── */
+.mood-section {
+    text-align: center;
+}
+.mood-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin-bottom: 8px;
+}
+.mood-desc {
+    color: var(--c-text-muted);
+    font-size: 0.98rem;
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+.mood-selector {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    border: 2px solid var(--c-card-border);
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transition);
+    min-width: 90px;
+}
+.mood-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--c-warm-peach);
+    box-shadow: var(--shadow-soft);
+}
+.mood-btn.selected {
+    background: linear-gradient(135deg, var(--c-warm-peach-light), var(--c-sun-yellow-light));
+    border-color: var(--c-warm-peach-dark);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 20px rgba(251, 146, 60, 0.2);
+}
+.mood-emoji {
+    font-size: 2rem;
+}
+.mood-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+}
+.mood-response-box {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #fffbeb, #fff1f2);
+    border: 2px solid var(--c-soft-pink-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    text-align: left;
+    animation: fadeIn 0.3s ease;
+}
+.mood-res-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.mood-res-emoji {
+    font-size: 1.4rem;
+}
+.mood-res-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--c-soft-pink-dark);
+}
+.mood-res-text {
+    font-size: 0.98rem;
+    color: var(--c-text-main);
+    line-height: 1.6;
+}
+.mood-history-wrapper {
+    text-align: left;
+    border-top: 1px solid var(--c-card-border);
+    padding-top: 18px;
+}
+.history-label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--c-text-muted);
+    margin-bottom: 10px;
+}
+.mood-history-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.mood-history-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--c-bg-subtle);
+    border: 1px solid var(--c-card-border);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+}
+.hist-emoji {
+    font-size: 1rem;
+}
+.hist-date {
+    font-weight: 600;
+    color: var(--c-text-muted);
+}
+.history-empty {
+    font-size: 0.88rem;
+    color: var(--c-text-light);
+    font-style: italic;
+}
+
+/* ─── 5. TẬP PHIẾU QUÀ TẶNG ─── */
+.coupons-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+.coupons-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin-bottom: 4px;
+}
+.coupons-desc {
+    color: var(--c-text-muted);
+    font-size: 0.95rem;
+}
+.coupons-stat-badge {
+    padding: 6px 14px;
+    background: var(--c-warm-peach-light);
+    color: var(--c-warm-peach-dark);
+    border: 1px solid var(--c-warm-peach-border);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.coupon-card {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    border: 2px dashed var(--c-warm-peach-border);
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+.coupon-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--c-warm-peach);
+}
+.coupon-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+.coupon-icon {
+    font-size: 1.8rem;
+}
+.coupon-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+}
+.coupon-desc {
+    font-size: 0.88rem;
+    color: var(--c-text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+.coupon-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--c-warm-peach-dark);
+}
+.coupon-stamp {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: #dc2626;
+    border: 2.5px solid #dc2626;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transform: rotate(-14deg) scale(0);
+    opacity: 0;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    letter-spacing: 1px;
+}
+.coupon-card.is-used {
+    background: #f8fafc;
+    border-style: solid;
+    border-color: #cbd5e1;
+    opacity: 0.78;
+}
+.coupon-card.is-used .coupon-stamp {
+    transform: rotate(-14deg) scale(1);
+    opacity: 1;
+}
+.coupons-footer-actions {
+    text-align: center;
+}
+
+/* ─── DARK MODE CHO TÍNH NĂNG MỚI ─── */
+[data-theme="dark"] .pill-btn--ambient {
+    background: #064e3b;
+    color: #6ee7b7;
+    border-color: #059669;
+}
+[data-theme="dark"] .ambient-btn {
+    background: #1a2038;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+[data-theme="dark"] .ambient-btn:hover {
+    background: #252d50;
+    border-color: var(--c-warm-peach);
+}
+[data-theme="dark"] .ambient-btn.active {
+    background: #2e1a38;
+    border-color: #f472b6;
+}
+[data-theme="dark"] .ambient-name {
+    color: #f8fafc;
+}
+[data-theme="dark"] .plant-display {
+    background: #151a30;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .plant-stat-box {
+    background: #1e253e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .plant-exp-bar {
+    background: #0f1322;
+}
+[data-theme="dark"] .mood-btn {
+    background: #1e253e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .mood-btn:hover {
+    background: #283152;
+}
+[data-theme="dark"] .mood-btn.selected {
+    background: #33203c;
+    border-color: var(--c-soft-pink);
+}
+[data-theme="dark"] .mood-name {
+    color: #f8fafc;
+}
+[data-theme="dark"] .mood-response-box {
+    background: #201828;
+    border-color: #be185d;
+}
+[data-theme="dark"] .mood-history-item {
+    background: #1e253e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .coupon-card {
+    background: #181e35;
+    border-color: rgba(251, 146, 60, 0.3);
+}
+[data-theme="dark"] .coupon-card:hover {
+    background: #222a4a;
+}
+[data-theme="dark"] .coupon-card.is-used {
+    background: #121626;
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.65;
+}
+[data-theme="dark"] .coupon-title {
+    color: #f8fafc;
+}
+[data-theme="dark"] .coupon-stamp {
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
 /* Responsive tinh chỉnh Header trên màn hình nhỏ */
 @media (max-width: 640px) {
     .header__actions {

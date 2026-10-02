@@ -1,14 +1,10 @@
 # Dependency directories
 node_modules/
 
-# Temporary test scripts and video generators
-*.py
-*.js
-!js/app.js
-!js/flower-garden.js
-!js/goodnight.js
-!js/cheer-up.js
-!js/minigames.js
+# Temporary test scripts in root and legacy archive
+/*.py
+/*.js
+archive/
 
 # Temporary media and captures
 *.png

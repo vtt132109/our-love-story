@@ -152,9 +152,49 @@
             });
         }
 
+        let cursorParticles = [];
+        const PETAL_EMOJIS = ['🌸', '✨', '🌼', '💖', '⭐', '🍃'];
+
+        function addCursorParticle(clientX, clientY) {
+            if (prefersReducedMotion) return;
+            if (cursorParticles.length > 28) return;
+            cursorParticles.push({
+                x: clientX,
+                y: clientY,
+                vx: (Math.random() - 0.5) * 1.8,
+                vy: Math.random() * 1.4 + 0.6,
+                life: 1.0,
+                decay: Math.random() * 0.02 + 0.02,
+                size: Math.random() * 6 + 14,
+                char: PETAL_EMOJIS[Math.floor(Math.random() * PETAL_EMOJIS.length)],
+                rotation: Math.random() * Math.PI * 2,
+                rotSpeed: (Math.random() - 0.5) * 0.08
+            });
+        }
+
+        let lastMove = 0;
+        window.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            if (now - lastMove > 40) {
+                addCursorParticle(e.clientX, e.clientY);
+                lastMove = now;
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const now = performance.now();
+                if (now - lastMove > 50) {
+                    addCursorParticle(e.touches[0].clientX, e.touches[0].clientY);
+                    lastMove = now;
+                }
+            }
+        }, { passive: true });
+
         function drawFrame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // 1. Vẽ các hạt Bokeh nền
             for (let i = 0; i < particles.length; i++) {
                 const p = particles[i];
                 if (!prefersReducedMotion) {
@@ -168,6 +208,30 @@
                 }
 
                 ctx.drawImage(p.sprite, p.x - p.size, p.y - p.size, p.size * 2, p.size * 2);
+            }
+
+            // 2. Vẽ vệt hoa và ánh sao theo con trỏ chuột
+            for (let i = cursorParticles.length - 1; i >= 0; i--) {
+                const cp = cursorParticles[i];
+                cp.x += cp.vx;
+                cp.y += cp.vy;
+                cp.rotation += cp.rotSpeed;
+                cp.life -= cp.decay;
+
+                if (cp.life <= 0) {
+                    cursorParticles.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.translate(cp.x, cp.y);
+                ctx.rotate(cp.rotation);
+                ctx.globalAlpha = Math.max(0, cp.life);
+                ctx.font = `${cp.size}px serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(cp.char, 0, 0);
+                ctx.restore();
             }
         }
 
@@ -194,6 +258,24 @@
         }
     }
 
+    // Modal Hộp Âm Thanh
+    function initAmbientModal() {
+        const modal = document.getElementById('modal-ambient');
+        const openBtn = document.getElementById('btn-header-ambient');
+        const closeBtn = document.getElementById('btn-close-ambient');
+        const backdrop = document.getElementById('ambient-backdrop');
+
+        openBtn?.addEventListener('click', () => {
+            if (modal) modal.hidden = false;
+        });
+        closeBtn?.addEventListener('click', () => {
+            if (modal) modal.hidden = true;
+        });
+        backdrop?.addEventListener('click', () => {
+            if (modal) modal.hidden = true;
+        });
+    }
+
     // Phím ESC để đóng mọi modal đang mở
     function initGlobalShortcuts() {
         document.addEventListener('keydown', (e) => {
@@ -207,14 +289,19 @@
     document.addEventListener('DOMContentLoaded', () => {
         ThemeManager.init();
         initBackground();
+        initAmbientModal();
         initGlobalShortcuts();
 
-        // Khởi tạo các module
+        // Khởi tạo các module tính năng
         FlowerGarden.init();
         Goodnight.init();
         CheerUp.init();
+        AmbientSound.init();
+        TamagotchiPlant.init();
+        FriendshipCoupons.init();
+        MoodTracker.init();
         MiniGames.init();
 
-        console.log('🌸 Chào mừng bạn đến với Góc Nhỏ Của Bạn & Tôi! (Dark Mode & 60FPS Ready)');
+        console.log('🌸 Chào mừng bạn đến với Góc Nhỏ Của Bạn & Tôi! (All 5 New Features Loaded)');
     });
 })();
