@@ -178,7 +178,12 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
         }
     }
 
+    let isInitialized = false;
+
     function init() {
+        if (isInitialized) return;
+        isInitialized = true;
+
         let hasAutoTriggered = false;
 
         function tick() {
@@ -209,6 +214,13 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
         });
     }
 
+    // Tự động kích hoạt ngay khi nạp để cập nhật ngay lập tức các con số
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
     return { 
         init, 
         getConfig, 
@@ -221,3 +233,4 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
 })();
 
 window.LoveAnniversary = LoveAnniversary;
+
