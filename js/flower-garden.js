@@ -59,32 +59,45 @@ const FlowerGarden = (() => {
         }
     ];
 
+    // Tạo danh sách 5 bông hoa cho 5 ngày đầu tiên
+    function getDefault5History() {
+        return [
+            { dayIndex: 1, date: 'Ngày 1', flower: flowerCatalog[0] },
+            { dayIndex: 2, date: 'Ngày 2', flower: flowerCatalog[1] },
+            { dayIndex: 3, date: 'Ngày 3', flower: flowerCatalog[2] },
+            { dayIndex: 4, date: 'Ngày 4', flower: flowerCatalog[3] },
+            { dayIndex: 5, date: 'Ngày 5', flower: flowerCatalog[4] }
+        ];
+    }
+
     function getData() {
+        const today = new Date().toDateString();
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
             if (!raw) {
-                // Lần đầu vào trang: tặng ngay 1 bông hoa đầu tiên
-                const today = new Date().toDateString();
+                // Đã 5 ngày trôi qua: bình hoa nở rực rỡ 5 bông đầu tiên
                 const initData = {
-                    count: 1,
+                    count: 5,
                     lastVisit: today,
-                    history: [
-                        {
-                            dayIndex: 1,
-                            date: new Date().toLocaleDateString('vi-VN'),
-                            flower: flowerCatalog[0]
-                        }
-                    ]
+                    history: getDefault5History()
                 };
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(initData));
                 return initData;
             }
-            return JSON.parse(raw);
+            const data = JSON.parse(raw);
+            // Nếu dữ liệu cũ có ít hơn 5 bông, tự động cập nhật lên đủ 5 bông
+            if (!data.count || data.count < 5 || !data.history || data.history.length < 5) {
+                data.count = 5;
+                data.history = getDefault5History();
+                if (!data.lastVisit) data.lastVisit = today;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }
+            return data;
         } catch {
             return {
-                count: 1,
-                lastVisit: new Date().toDateString(),
-                history: [{ dayIndex: 1, date: new Date().toLocaleDateString('vi-VN'), flower: flowerCatalog[0] }]
+                count: 5,
+                lastVisit: today,
+                history: getDefault5History()
             };
         }
     }
@@ -101,7 +114,7 @@ const FlowerGarden = (() => {
         const data = getData();
         const today = new Date().toDateString();
 
-        // Nếu là ngày mới thì nở thêm 1 bông hoa mới
+        // Nếu là ngày mới thì nở thêm 1 bông hoa mới theo thời gian thực
         if (data.lastVisit !== today) {
             data.lastVisit = today;
             data.count += 1;
@@ -150,9 +163,7 @@ const FlowerGarden = (() => {
 
         if (countEl) countEl.textContent = data.count;
         if (streakEl) {
-            streakEl.textContent = data.count === 1
-                ? 'Hôm nay là ngày đầu tiên bạn và tôi bắt đầu cùng nhau vun đắp tình yêu này!'
-                : `Hai đứa mình đã yêu nhau và đồng hành được ${data.count} ngày rồi đó! Yêu bạn rất nhiều! 💕`;
+            streakEl.textContent = `Hai đứa mình đã cùng nhau chăm sóc bình hoa được ${data.count} ngày rồi đó! Yêu bạn rất nhiều! 💕`;
         }
 
         if (!container) return;
@@ -223,10 +234,6 @@ const FlowerGarden = (() => {
         renderGarden();
 
         document.getElementById('btn-water-today')?.addEventListener('click', waterAnimation);
-        document.getElementById('btn-demo-next-day')?.addEventListener('click', () => {
-            addDemoDay();
-            waterAnimation();
-        });
 
         // Đóng modal hoa
         const modal = document.getElementById('modal-flower');
@@ -241,5 +248,7 @@ const FlowerGarden = (() => {
         });
     }
 
-    return { init, addDemoDay };
+    return { init, addDemoDay, getData, saveData, renderGarden };
 })();
+
+window.FlowerGarden = FlowerGarden;

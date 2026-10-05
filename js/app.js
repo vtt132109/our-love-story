@@ -293,6 +293,7 @@
         initGlobalShortcuts();
 
         // Khởi tạo các module tính năng
+        LoveAnniversary.init();
         FlowerGarden.init();
         Goodnight.init();
         CheerUp.init();
@@ -302,6 +303,6 @@
         MoodTracker.init();
         MiniGames.init();
 
-        console.log('🌸 Chào mừng bạn đến với Góc Nhỏ Của Bạn & Tôi! (All 5 New Features Loaded)');
+        console.log('🌸 Chào mừng bạn đến với Góc Nhỏ Của Bạn & Tôi! (Anniversary & Birthday Active)');
     });
 })();

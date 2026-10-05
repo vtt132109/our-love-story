@@ -1836,3 +1836,473 @@ a:focus-visible,
         display: none; /* Chỉ hiện icon trên màn rất nhỏ để không vỡ dòng */
     }
 }
+
+/* ═══════════════════════════════════════════════════════
+   7. HÀNH TRÌNH YÊU NHAU (14/8) & ĐẾM NGƯỢC SINH NHẬT (14/10)
+   ═══════════════════════════════════════════════════════ */
+.love-anniversary-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 247, 237, 0.96) 0%, rgba(253, 242, 248, 0.96) 100%);
+    border: 2px solid var(--c-soft-pink-border);
+}
+
+.anniversary-main-title {
+    font-size: clamp(1.4rem, 3.2vw, 1.9rem);
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin-bottom: 24px;
+}
+
+.anniversary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.anniversary-card {
+    background: var(--c-card);
+    border: 1px solid var(--c-card-border);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    box-shadow: 0 4px 16px rgba(251, 146, 60, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.anniversary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.anniversary-card--dating {
+    border-top: 4px solid var(--c-soft-pink);
+}
+
+.anniversary-card--birthday {
+    border-top: 4px solid var(--c-sun-yellow);
+}
+
+.anniversary-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.anniversary-icon {
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.heartbeat {
+    animation: pulseHeart 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.22); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+}
+
+.anniversary-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+    margin: 0;
+}
+
+.anniversary-sub {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+}
+
+.love-days-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 10px 0 16px;
+    justify-content: center;
+}
+
+.love-days-big {
+    font-family: var(--font-script);
+    font-size: clamp(3.2rem, 8vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--c-soft-pink-dark) 0%, var(--c-warm-peach-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.love-days-unit {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--c-text-main);
+}
+
+.love-ticker-box {
+    background: var(--c-soft-pink-light);
+    border: 1px solid var(--c-soft-pink-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.ticker-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c-text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ticker-units {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-soft-pink-dark);
+}
+
+.ticker-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 38px;
+}
+
+.ticker-unit small {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--c-text-light);
+    text-transform: uppercase;
+}
+
+.ticker-colon {
+    font-weight: 700;
+    color: var(--c-soft-pink-dark);
+    margin-bottom: 10px;
+}
+
+.anniversary-quote {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--c-text-muted);
+    text-align: center;
+    margin-top: 6px;
+}
+
+/* Đếm ngược sinh nhật */
+.bday-countdown-box {
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--c-sun-yellow-dark);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.bday-countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.bday-box {
+    background: var(--c-sun-yellow-light);
+    border: 1px solid var(--c-sun-yellow-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 8px;
+    min-width: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bday-num {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--c-sun-yellow-dark);
+    line-height: 1.1;
+}
+
+.bday-lbl {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+}
+
+.bday-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-bday-preview {
+    font-size: 0.88rem;
+    padding: 8px 18px;
+}
+
+/* Banner sinh nhật khi đúng ngày */
+.bday-active-banner {
+    background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 100%);
+    border: 2px dashed #f59e0b;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    animation: bdayGlow 2s infinite alternate;
+}
+
+@keyframes bdayGlow {
+    from { box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+    to { box-shadow: 0 0 24px rgba(245, 158, 11, 0.5); }
+}
+
+.bday-balloon-anim {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.bday-active-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #b45309;
+    margin-bottom: 6px;
+}
+
+.bday-active-desc {
+    font-size: 0.95rem;
+    color: var(--c-text-main);
+    margin-bottom: 14px;
+}
+
+.btn-bday-sparkle {
+    background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+}
+
+/* Modal Sinh Nhật */
+.modal--birthday .modal__dialog {
+    max-width: 520px;
+    background: radial-gradient(circle at top, #fffbeb 0%, #ffffff 80%);
+    border: 2px solid #fde68a;
+    box-shadow: 0 20px 50px rgba(245, 158, 11, 0.25);
+    text-align: center;
+    padding: 40px 28px;
+}
+
+.birthday-cake-icon {
+    font-size: 3.8rem;
+    margin-bottom: 10px;
+    animation: cakeBounce 1.2s infinite alternate;
+}
+
+@keyframes cakeBounce {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-8px) scale(1.08); }
+}
+
+.birthday-tag {
+    display: inline-block;
+    background: #fef3c7;
+    color: #b45309;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+}
+
+.bday-modal-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #9a3412;
+    margin-bottom: 10px;
+}
+
+.birthday-stars {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.birthday-letter-to {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #b45309;
+    text-align: left;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.bday-modal-message {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--c-text-main);
+    background: rgba(254, 243, 199, 0.5);
+    padding: 20px 22px;
+    border-radius: var(--radius-md);
+    margin-bottom: 14px;
+    border-left: 4px solid #f59e0b;
+    text-align: left;
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.birthday-letter-sign {
+    font-family: var(--font-script), 'Dancing Script', cursive;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #db2777;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.btn-primary--bday {
+    background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    box-shadow: 0 4px 18px rgba(236, 72, 153, 0.35);
+    font-size: 1.05rem;
+}
+
+/* Vòng quay Spin Cooldown Status */
+.spin-cooldown-indicator {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.badge-spin-ready {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--c-leaf-green-light);
+    color: var(--c-leaf-green-dark);
+    border: 1px solid var(--c-leaf-green-border);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    animation: pulseReady 2s infinite ease-in-out;
+}
+
+@keyframes pulseReady {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+}
+
+.badge-spin-wait {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-spin-disabled {
+    opacity: 0.7;
+    filter: grayscale(0.2);
+    cursor: not-allowed;
+}
+
+/* Link Quản trị ở Footer */
+.footer-admin-link-box {
+    margin-top: 12px;
+}
+
+.admin-portal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--c-text-light);
+    text-decoration: none;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px dashed rgba(251, 146, 60, 0.3);
+    transition: var(--transition);
+}
+
+.admin-portal-link:hover {
+    color: var(--c-warm-peach-dark);
+    border-color: var(--c-warm-peach);
+    background: var(--c-warm-peach-light);
+}
+
+/* Dark mode cho Anniversary & Birthday */
+[data-theme="dark"] .love-anniversary-section {
+    background: linear-gradient(135deg, rgba(24, 24, 47, 0.96) 0%, rgba(30, 27, 75, 0.96) 100%);
+    border-color: rgba(168, 85, 247, 0.35);
+}
+
+[data-theme="dark"] .anniversary-card {
+    background: #181e35;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .anniversary-title {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .anniversary-sub {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .love-days-unit {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .love-ticker-box {
+    background: rgba(244, 114, 182, 0.12);
+    border-color: rgba(244, 114, 182, 0.3);
+}
+
+[data-theme="dark"] .ticker-units {
+    color: #f472b6;
+}
+
+[data-theme="dark"] .bday-box {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="dark"] .bday-num {
+    color: #fbbf24;
+}
+
+[data-theme="dark"] .bday-lbl {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .modal--birthday .modal__dialog {
+    background: #181e35;
+    border-color: #f59e0b;
+}
+
+[data-theme="dark"] .bday-modal-title {
+    color: #fbbf24;
+}
+
+[data-theme="dark"] .bday-modal-message {
+    background: rgba(245, 158, 11, 0.12);
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .birthday-letter-to {
+    color: #fde68a;
+}
+
+[data-theme="dark"] .birthday-letter-sign {
+    color: #f472b6;
+}
+

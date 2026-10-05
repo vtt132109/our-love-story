@@ -1,12 +1,20 @@
 /* ═══════════════════════════════════════════════════════
    friendship-coupons.js — Vòng Quay & Ví Phiếu Tình Yêu "Bạn & Tôi"
-   Quay vòng quay để trúng phiếu tình yêu và cất vào ví sử dụng
+   - Mỗi 3 ngày nhận được 1 lượt quay miễn phí
+   - Đã gỡ bỏ nút reset phiếu để bảo toàn ví của bạn gái
+   - Mở rộng kho voucher đa dạng, lãng mạn & hỗ trợ Admin airdrop
    ═══════════════════════════════════════════════════════ */
 
 const FriendshipCoupons = (() => {
     const STORAGE_KEY = 'cozy_love_coupons_wallet_v2';
+    const LAST_SPIN_KEY = 'cozy_wheel_last_spin_time';
+    const BONUS_SPINS_KEY = 'cozy_wheel_bonus_spins';
+    const CUSTOM_POOL_KEY = 'cozy_custom_vouchers_pool';
 
-    const VOUCHER_POOL = [
+    const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+
+    // Kho Voucher Tình Yêu 16 loại ngọt ngào & ấm áp
+    const DEFAULT_VOUCHER_POOL = [
         {
             id: 'kiss',
             icon: '💋',
@@ -62,8 +70,77 @@ const FriendshipCoupons = (() => {
             title: 'Phiếu Ước Gì Được Nấy',
             desc: 'Tấm vé vạn năng dành riêng cho bạn — bất kể bạn ước điều gì, tôi cũng sẽ cố hết sức vì bạn!',
             color: '#d946ef'
+        },
+        {
+            id: 'scooter_ride',
+            icon: '🛵',
+            title: 'Phiếu Đèo Đi Hóng Gió Đêm',
+            desc: 'Cùng bạn lượn phố đêm, hít hà từng cơn gió mát lành và nghe bạn líu lo trò chuyện.',
+            color: '#0284c7'
+        },
+        {
+            id: 'photoshoot',
+            icon: '📸',
+            title: 'Phiếu Phó Nháy Sống Ảo 100 Tấm',
+            desc: 'Kiên nhẫn chụp ảnh cho bạn đến khi nào chọn được tấm ưng ý đăng Facebook/Instagram mới thôi!',
+            color: '#db2777'
+        },
+        {
+            id: 'cook',
+            icon: '🍳',
+            title: 'Phiếu Nấu Món Bạn Thích Ăn',
+            desc: 'Tự tay vào bếp chuẩn bị bữa ăn ấm nóng thơm lừng dành riêng cho người tôi yêu thương.',
+            color: '#ea580c'
+        },
+        {
+            id: 'movie',
+            icon: '🍿',
+            title: 'Phiếu Xem Phim Chiếu Rạp Tự Chọn',
+            desc: 'Bạn chọn phim và bắp rang bơ, tôi lo mua vé và nắm chặt tay bạn suốt cả buổi xem.',
+            color: '#7c3aed'
+        },
+        {
+            id: 'sleep_in',
+            icon: '🛌',
+            title: 'Phiếu Ngủ Nướng Ngày Chủ Nhật',
+            desc: 'Một ngày lười biếng trọn vẹn, cùng nhau ngủ nướng không báo thức và không một chút âu lo.',
+            color: '#4f46e5'
+        },
+        {
+            id: 'unconditional_peace',
+            icon: '🕊️',
+            title: 'Phiếu Làm Hòa Tức Thì',
+            desc: 'Bất kể ai đúng ai sai, tôi sẽ lập tức xin lỗi, dỗ dành và làm hòa với bạn ngay không cãi lời.',
+            color: '#0d9488'
+        },
+        {
+            id: 'secret_gift',
+            icon: '✨',
+            title: 'Phiếu Món Quà Bất Ngờ',
+            desc: 'Một món quà nhỏ xinh xắn được gửi bất ngờ đến bạn để thắp sáng một ngày thật vui.',
+            color: '#ca8a04'
+        },
+        {
+            id: 'sweet_treat',
+            icon: '🍰',
+            title: 'Phiếu Bánh Ngọt Tráng Miệng',
+            desc: 'Một phần bánh ngọt ngào tan chảy như tình yêu tôi dành cho người tôi thương nhất trần đời.',
+            color: '#e11d48'
         }
     ];
+
+    function getVoucherPool() {
+        try {
+            const raw = localStorage.getItem(CUSTOM_POOL_KEY);
+            if (raw) {
+                const custom = JSON.parse(raw);
+                if (Array.isArray(custom) && custom.length > 0) {
+                    return [...DEFAULT_VOUCHER_POOL, ...custom];
+                }
+            }
+        } catch (e) {}
+        return DEFAULT_VOUCHER_POOL;
+    }
 
     let canvas, ctx;
     let angle = 0;
@@ -86,6 +163,115 @@ const FriendshipCoupons = (() => {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         } catch (e) {}
+    }
+
+    // Quản lý lượt quay 3 ngày 1 lần & Bonus Spins từ Admin
+    function getBonusSpins() {
+        try {
+            const val = parseInt(localStorage.getItem(BONUS_SPINS_KEY) || '0', 10);
+            return isNaN(val) ? 0 : val;
+        } catch {
+            return 0;
+        }
+    }
+
+    function setBonusSpins(count) {
+        try {
+            localStorage.setItem(BONUS_SPINS_KEY, Math.max(0, count).toString());
+        } catch {}
+    }
+
+    function getLastSpinTime() {
+        try {
+            const val = parseInt(localStorage.getItem(LAST_SPIN_KEY) || '0', 10);
+            return isNaN(val) ? 0 : val;
+        } catch {
+            return 0;
+        }
+    }
+
+    function setLastSpinTime(timestamp) {
+        try {
+            localStorage.setItem(LAST_SPIN_KEY, timestamp.toString());
+        } catch {}
+    }
+
+    function getSpinStatus() {
+        const bonus = getBonusSpins();
+        if (bonus > 0) {
+            return {
+                canSpin: true,
+                bonusSpins: bonus,
+                remainingMs: 0,
+                statusText: `Bạn có ${bonus} lượt quay đặc biệt! 🎁`
+            };
+        }
+
+        const last = getLastSpinTime();
+        if (!last) {
+            // Lần đầu vào trang: được 1 lượt quay miễn phí
+            return {
+                canSpin: true,
+                bonusSpins: 0,
+                remainingMs: 0,
+                statusText: 'Bạn có 1 lượt quay miễn phí đầu tiên! ✨'
+            };
+        }
+
+        const elapsed = Date.now() - last;
+        const remainingMs = THREE_DAYS_MS - elapsed;
+
+        if (remainingMs <= 0) {
+            return {
+                canSpin: true,
+                bonusSpins: 0,
+                remainingMs: 0,
+                statusText: 'Đã đến kỳ quay mới! Bạn có 1 lượt quay miễn phí 🎡'
+            };
+        }
+
+        const hoursTotal = Math.ceil(remainingMs / (1000 * 60 * 60));
+        const days = Math.floor(hoursTotal / 24);
+        const hours = hoursTotal % 24;
+
+        let timeStr = '';
+        if (days > 0) {
+            timeStr = `${days} ngày ${hours} giờ`;
+        } else {
+            const mins = Math.ceil(remainingMs / (1000 * 60));
+            timeStr = `${mins} phút`;
+        }
+
+        return {
+            canSpin: false,
+            bonusSpins: 0,
+            remainingMs: remainingMs,
+            statusText: `Lượt quay kế tiếp sau: ${timeStr} ⏳`
+        };
+    }
+
+    function updateSpinButtonUI() {
+        const btn = document.getElementById('btn-spin-voucher');
+        if (!btn) return;
+
+        const status = getSpinStatus();
+        let indicator = document.getElementById('spin-cooldown-indicator');
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'spin-cooldown-indicator';
+            indicator.className = 'spin-cooldown-indicator';
+            btn.parentNode?.insertBefore(indicator, btn.nextSibling);
+        }
+
+        if (status.canSpin) {
+            btn.disabled = false;
+            btn.classList.remove('btn-spin-disabled');
+            indicator.innerHTML = `<span class="badge-spin-ready">✨ ${status.statusText}</span>`;
+        } else {
+            btn.disabled = true;
+            btn.classList.add('btn-spin-disabled');
+            indicator.innerHTML = `<span class="badge-spin-wait">🔒 Mỗi 3 ngày được 1 lượt quay — ${status.statusText}</span>`;
+        }
     }
 
     // Âm thanh chúc mừng / trúng thưởng bằng Web Audio
@@ -137,7 +323,8 @@ const FriendshipCoupons = (() => {
             ctx = canvas.getContext('2d');
         }
 
-        const total = VOUCHER_POOL.length;
+        const pool = getVoucherPool();
+        const total = pool.length;
         const arc = (Math.PI * 2) / total;
         const radius = canvas.width / 2;
 
@@ -149,16 +336,16 @@ const FriendshipCoupons = (() => {
         for (let i = 0; i < total; i++) {
             const startAngle = i * arc;
             const endAngle = startAngle + arc;
-            const v = VOUCHER_POOL[i];
+            const v = pool[i];
 
             // Slice
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.arc(0, 0, radius - 4, startAngle, endAngle);
             ctx.closePath();
-            ctx.fillStyle = v.color;
+            ctx.fillStyle = v.color || '#fb923c';
             ctx.fill();
-            ctx.lineWidth = 2.5;
+            ctx.lineWidth = 2;
             ctx.strokeStyle = '#ffffff';
             ctx.stroke();
 
@@ -166,17 +353,20 @@ const FriendshipCoupons = (() => {
             ctx.save();
             ctx.rotate(startAngle + arc / 2);
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 11.5px Quicksand, sans-serif';
+            ctx.font = 'bold 10px Quicksand, sans-serif';
             ctx.textAlign = 'right';
             ctx.shadowColor = 'rgba(0,0,0,0.35)';
-            ctx.shadowBlur = 4;
-            ctx.fillText(`${v.icon} ${v.title}`, radius - 16, 4);
+            ctx.shadowBlur = 3;
+
+            // Rút gọn chữ nếu dài
+            const displayTitle = v.title.replace('Phiếu ', '');
+            ctx.fillText(`${v.icon} ${displayTitle}`, radius - 12, 3);
             ctx.restore();
         }
 
         // Tâm vòng quay trái tim
         ctx.beginPath();
-        ctx.arc(0, 0, 20, 0, Math.PI * 2);
+        ctx.arc(0, 0, 22, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
         ctx.fill();
         ctx.strokeStyle = '#f43f5e';
@@ -191,21 +381,28 @@ const FriendshipCoupons = (() => {
         ctx.restore();
     }
 
-    // ─── 2. QUAY VÒNG QUAY NHẬN PHIẾU ───
+    // ─── 2. QUAY VÒNG QUAY NHẬN PHIẾU (3 NGÀY 1 LẦN) ───
     function spin() {
         if (isSpinning) return;
-        isSpinning = true;
 
+        const status = getSpinStatus();
+        if (!status.canSpin) {
+            alert(`Người yêu ơi, vòng quay đang trong thời gian nghỉ ngơi nha! ${status.statusText} 💕`);
+            return;
+        }
+
+        isSpinning = true;
         const btn = document.getElementById('btn-spin-voucher');
         if (btn) btn.disabled = true;
 
-        const total = VOUCHER_POOL.length;
+        const pool = getVoucherPool();
+        const total = pool.length;
         const arc = (Math.PI * 2) / total;
         const targetIndex = Math.floor(Math.random() * total);
 
         const currentBase = ((angle % (Math.PI * 2)) + (Math.PI * 2)) % (Math.PI * 2);
         const fullRounds = 5 + Math.random() * 3;
-        // Mục tiêu căn tại đỉnh 12h: góc kim là -π/2
+        // Mục tiêu căn tại đỉnh 12h: kim là -π/2
         const targetNormalized = ((Math.PI * 2 * 10 - targetIndex * arc - arc / 2 - Math.PI / 2) % (Math.PI * 2) + (Math.PI * 2)) % (Math.PI * 2);
         const forwardDelta = (targetNormalized - currentBase + Math.PI * 2) % (Math.PI * 2);
         const totalRotation = fullRounds * Math.PI * 2 + forwardDelta;
@@ -226,9 +423,18 @@ const FriendshipCoupons = (() => {
                 requestAnimationFrame(animate);
             } else {
                 isSpinning = false;
-                if (btn) btn.disabled = false;
 
-                const wonVoucher = VOUCHER_POOL[targetIndex];
+                // Tiêu thụ lượt quay
+                const bonus = getBonusSpins();
+                if (bonus > 0) {
+                    setBonusSpins(bonus - 1);
+                } else {
+                    setLastSpinTime(Date.now());
+                }
+
+                updateSpinButtonUI();
+
+                const wonVoucher = pool[targetIndex];
                 addVoucherToWallet(wonVoucher);
                 playWinSound();
                 showWinModal(wonVoucher);
@@ -238,17 +444,17 @@ const FriendshipCoupons = (() => {
         requestAnimationFrame(animate);
     }
 
-    function addVoucherToWallet(voucher) {
+    function addVoucherToWallet(voucher, customCount = 1) {
         const wallet = getWalletData();
         const existing = wallet.find(item => item.id === voucher.id);
 
         if (existing) {
-            existing.count += 1;
+            existing.count += customCount;
             existing.lastWon = new Date().toLocaleDateString('vi-VN');
         } else {
             wallet.unshift({
                 id: voucher.id,
-                count: 1,
+                count: customCount,
                 used: 0,
                 lastWon: new Date().toLocaleDateString('vi-VN')
             });
@@ -281,7 +487,7 @@ const FriendshipCoupons = (() => {
                     <div class="win-text-box">
                         <strong>Chúc mừng bạn yêu! Bạn vừa quay trúng:</strong>
                         <span class="win-title">${voucher.title}</span>
-                        <p class="win-note">${voucher.desc} (Phiếu đã được cất vào Ví Tình Yêu của bạn bên dưới nè! 💕)</p>
+                        <p class="win-note">${voucher.desc} (Phiếu đã được cất an toàn vào Ví Tình Yêu bên dưới nè! 💕)</p>
                     </div>
                 </div>
             `;
@@ -291,7 +497,7 @@ const FriendshipCoupons = (() => {
         // Bắn hiệu ứng tim bay
         for (let i = 0; i < 10; i++) {
             const heart = document.createElement('span');
-            heart.textContent = ['💖', '💕', '✨', '🌸'][Math.floor(Math.random() * 4)];
+            heart.textContent = ['💖', '💕', '✨', '🌸', '🎁'][Math.floor(Math.random() * 5)];
             heart.style.position = 'fixed';
             heart.style.left = `${50 + (Math.random() * 30 - 15)}%`;
             heart.style.top = '45%';
@@ -317,14 +523,20 @@ const FriendshipCoupons = (() => {
         if (!container) return;
 
         const wallet = getWalletData();
+        const pool = getVoucherPool();
         container.innerHTML = '';
 
         let totalAvailable = 0;
         let totalCoupons = 0;
 
         wallet.forEach(item => {
-            const v = VOUCHER_POOL.find(p => p.id === item.id);
-            if (!v) return;
+            const v = pool.find(p => p.id === item.id) || {
+                id: item.id,
+                icon: '🎁',
+                title: 'Phiếu Tình Yêu Đặc Biệt',
+                desc: 'Phiếu quà tặng riêng do người yêu gửi đến bạn.',
+                color: '#ec4899'
+            };
 
             const remaining = item.count - item.used;
             totalAvailable += remaining;
@@ -387,18 +599,30 @@ const FriendshipCoupons = (() => {
     function init() {
         drawWheel();
         renderWallet();
+        updateSpinButtonUI();
 
         document.getElementById('btn-spin-voucher')?.addEventListener('click', spin);
 
-        document.getElementById('btn-reset-coupons')?.addEventListener('click', () => {
-            const initial = [
-                { id: 'hug', count: 1, used: 0, lastWon: new Date().toLocaleDateString('vi-VN') },
-                { id: 'forgive', count: 1, used: 0, lastWon: new Date().toLocaleDateString('vi-VN') }
-            ];
-            saveWalletData(initial);
-            renderWallet();
-        });
+        // Cập nhật trạng thái đếm ngược thời gian quay định kỳ mỗi 30s
+        setInterval(updateSpinButtonUI, 30000);
     }
 
-    return { init, spin, drawWheel };
+    return { 
+        init, 
+        spin, 
+        drawWheel, 
+        renderWallet, 
+        getWalletData, 
+        saveWalletData, 
+        getVoucherPool, 
+        addVoucherToWallet, 
+        getBonusSpins, 
+        setBonusSpins, 
+        getLastSpinTime, 
+        setLastSpinTime, 
+        updateSpinButtonUI 
+    };
 })();
+
+window.FriendshipCoupons = FriendshipCoupons;
+

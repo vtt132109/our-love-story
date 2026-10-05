@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Quản Trị Tình Yêu Của Tris 🔐💖</title>
+    <meta name="description" content="Trang quản trị bí mật dành riêng cho Tris để gửi gắm lời khuyên, voucher và điều chỉnh các mốc kỷ niệm tình yêu.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- ══════════════ 1. MÀN HÌNH BẢO MẬT NHẬP MÃ PIN ══════════════ -->
+    <div id="pin-screen" class="pin-screen">
+        <div class="pin-box">
+            <span class="pin-icon">🔐</span>
+            <h1 class="pin-title">Góc Bí Mật Của Tris</h1>
+            <p class="pin-desc">Vui lòng nhập mã PIN bảo mật để mở khóa bảng điều khiển tình yêu dành cho bạn gái.</p>
+            
+            <div class="pin-input-group">
+                <input type="password" maxlength="1" class="pin-digit" autofocus aria-label="Ký tự 1">
+                <input type="password" maxlength="1" class="pin-digit" aria-label="Ký tự 2">
+                <input type="password" maxlength="1" class="pin-digit" aria-label="Ký tự 3">
+                <input type="password" maxlength="1" class="pin-digit" aria-label="Ký tự 4">
+            </div>
+
+            <button id="btn-pin-submit" class="btn-pin-submit" type="button">Mở Khóa Bảng Quản Trị 🚀</button>
+            <p id="pin-error-msg" class="pin-error-msg"></p>
+            <p class="pin-hint">💡 Gợi ý: Ngày bắt đầu hẹn hò của hai bạn (1408)</p>
+        </div>
+    </div>
+
+    <!-- ══════════════ 2. GIAO DIỆN BẢNG ĐIỀU KHIỂN CHÍNH ══════════════ -->
+    <div id="admin-app" style="display: none;">
+        <!-- Header Admin -->
+        <header class="adm-header">
+            <div class="adm-header-container">
+                <div class="adm-logo">
+                    <span>💖</span>
+                    <span>Quản Trị Tình Yêu — Tris</span>
+                    <span class="adm-logo-badge">Admin VIP</span>
+                </div>
+                <div class="adm-header-actions">
+                    <a href="index.html" class="adm-btn-nav adm-btn-nav--home">
+                        <span>🌸 Xem Trang Web Chính</span>
+                    </a>
+                    <button id="btn-change-pin" class="adm-btn-nav" type="button">
+                        <span>🔑 Đổi PIN</span>
+                    </button>
+                    <button id="btn-logout" class="adm-btn-nav" type="button">
+                        <span>🚪 Đăng Xuất</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Container Chính -->
+        <main class="adm-container">
+            <!-- Tabs Điều Hướng -->
+            <nav class="adm-tabs" role="tablist">
+                <button class="adm-tab active" data-target="tab-cheer" type="button">
+                    <span>💌 Lời Khuyên Yêu Thương</span>
+                </button>
+                <button class="adm-tab" data-target="tab-night" type="button">
+                    <span>🌙 Lời Chúc Ngủ Ngon</span>
+                </button>
+                <button class="adm-tab" data-target="tab-vouchers" type="button">
+                    <span>🎟️ Voucher & Vòng Quay</span>
+                </button>
+                <button class="adm-tab" data-target="tab-anniversary" type="button">
+                    <span>🎂 Hẹn Hò & Sinh Nhật</span>
+                </button>
+                <button class="adm-tab" data-target="tab-garden" type="button">
+                    <span>💐 Bình Hoa Tình Yêu</span>
+                </button>
+            </nav>
+
+            <!-- ══════ PANEL 1: LỜI KHUYÊN YÊU THƯƠNG ══════ -->
+            <section id="tab-cheer" class="adm-panel active">
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>💌</span> Thêm Lời Khuyên Yêu Thương Mới</h2>
+                    </div>
+                    <p class="adm-card-desc">Những câu động viên này sẽ xuất hiện ngẫu nhiên khi bạn gái bấm vào nút "Nạp yêu thương ☀️".</p>
+                    
+                    <div class="adm-form-group">
+                        <label for="input-new-cheer" class="adm-label">Nội dung lời nhắn / động viên:</label>
+                        <textarea id="input-new-cheer" class="adm-textarea" placeholder="Nhập câu khuyên ngọt ngào của Tris... (Ví dụ: Em nhớ ăn uống đúng giờ nhé, có anh thương em nhiều!)"></textarea>
+                    </div>
+                    <button id="btn-add-cheer" class="adm-btn-primary" type="button">
+                        <span>Thêm Lời Khuyên Mới</span> 💖
+                    </button>
+                </div>
+
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>📋</span> Danh Sách Lời Khuyên Đang Hoạt Động</h2>
+                        <button id="btn-reset-cheer-defaults" class="adm-btn-secondary" type="button">
+                            <span>Khôi phục mặc định ban đầu</span> 🔄
+                        </button>
+                    </div>
+                    <div id="cheer-list-container" class="adm-items-list">
+                        <!-- Render bằng JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══════ PANEL 2: LỜI CHÚC NGỦ NGON ══════ -->
+            <section id="tab-night" class="adm-panel">
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>🌙</span> Thêm Lời Chúc Ngủ Ngon Mới</h2>
+                    </div>
+                    <p class="adm-card-desc">Lời chúc xuất hiện mỗi tối khi bạn gái bấm nút "Chúc ngủ ngon 🌙".</p>
+                    
+                    <div class="adm-form-group">
+                        <label for="input-new-night" class="adm-label">Nội dung lời chúc dịu êm:</label>
+                        <textarea id="input-new-night" class="adm-textarea" placeholder="Nhập lời chúc ngủ ngon... (Ví dụ: Chúc công chúa của anh ngủ thật sâu, mơ giấc mơ thật đẹp nhé!)"></textarea>
+                    </div>
+                    <button id="btn-add-night" class="adm-btn-primary" type="button">
+                        <span>Thêm Lời Chúc Mới</span> 💫
+                    </button>
+                </div>
+
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>✨</span> Danh Sách Lời Chúc Ngủ Ngon</h2>
+                        <button id="btn-reset-night-defaults" class="adm-btn-secondary" type="button">
+                            <span>Khôi phục mặc định ban đầu</span> 🔄
+                        </button>
+                    </div>
+                    <div id="night-list-container" class="adm-items-list">
+                        <!-- Render bằng JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══════ PANEL 3: VOUCHER & VÒNG QUAY ══════ -->
+            <section id="tab-vouchers" class="adm-panel">
+                <!-- Airdrop Voucher trực tiếp -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>🎁</span> Cung Cấp / Bơm Voucher Trực Tiếp Vào Ví Bạn Gái</h2>
+                    </div>
+                    <p class="adm-card-desc">Bạn muốn bất ngờ tặng quà cho bạn gái mà không cần chờ quay vòng quay? Chọn loại phiếu và gửi thẳng vào ví của cô ấy ngay tại đây!</p>
+                    
+                    <div class="airdrop-box">
+                        <div class="airdrop-grid">
+                            <div class="adm-form-group">
+                                <label for="select-airdrop-voucher" class="adm-label">Chọn loại phiếu tình yêu:</label>
+                                <select id="select-airdrop-voucher" class="adm-select">
+                                    <!-- Render bằng JS -->
+                                </select>
+                            </div>
+                            <div class="adm-form-group">
+                                <label for="input-airdrop-qty" class="adm-label">Số lượng tặng:</label>
+                                <input id="input-airdrop-qty" type="number" min="1" max="10" value="1" class="adm-input">
+                            </div>
+                        </div>
+                        <button id="btn-airdrop-submit" class="adm-btn-primary" type="button">
+                            <span>Gửi Tặng Vào Ví Bạn Gái Ngay</span> 🚀🎁
+                        </button>
+                    </div>
+
+                    <!-- Quản lý lượt quay vòng quay 3 ngày 1 lần -->
+                    <h3 class="adm-card-title" style="font-size: 1.1rem; margin-top: 24px;"><span>🎡</span> Điều Khiển Lượt Quay Vòng Quay (Mỗi 3 Ngày)</h3>
+                    <p class="adm-card-desc">Quy tắc hiện tại: Mỗi 3 ngày bạn gái nhận được 1 lượt quay miễn phí. Tris có thể thưởng thêm lượt hoặc mở khóa ngay lập tức.</p>
+                    
+                    <div class="bonus-spin-box">
+                        <div class="bonus-spin-info">
+                            <div>Lượt quay thưởng thêm (Bonus): <strong id="bonus-spin-count-display">0 lượt</strong></div>
+                            <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 4px;">Lần quay gần nhất: <span id="last-spin-time-display">Đang kiểm tra...</span></div>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button id="btn-add-bonus-spin" class="adm-btn-primary" type="button">
+                                <span>Thưởng +1 Lượt Quay</span> 🎡
+                            </button>
+                            <button id="btn-reset-spin-cooldown" class="adm-btn-secondary" type="button">
+                                <span>Mở Khóa Quay Ngay (Bỏ qua 3 ngày)</span> ⚡
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soi Ví Bạn Gái Hiện Tại -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>👛</span> Tình Trạng Ví Phiếu Hiện Tại Của Bạn Gái</h2>
+                    </div>
+                    <div id="admin-wallet-inspection" class="adm-items-list">
+                        <!-- Render bằng JS -->
+                    </div>
+                </div>
+
+                <!-- Tạo Loại Voucher Mới -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>➕</span> Tạo Thêm Loại Voucher Mới Vào Kho</h2>
+                    </div>
+                    <p class="adm-card-desc">Thêm loại phiếu tùy chỉnh riêng của Tris vào vòng quay và ví.</p>
+
+                    <div class="adm-form-row">
+                        <div class="adm-form-group">
+                            <label for="input-new-voucher-title" class="adm-label">Tên phiếu:</label>
+                            <input id="input-new-voucher-title" class="adm-input" placeholder="Ví dụ: Phiếu Đi Chơi Biển Cùng Anh">
+                        </div>
+                        <div class="adm-form-group">
+                            <label for="input-new-voucher-icon" class="adm-label">Biểu tượng (Emoji):</label>
+                            <input id="input-new-voucher-icon" class="adm-input" value="🏖️" maxlength="4">
+                        </div>
+                        <div class="adm-form-group">
+                            <label for="input-new-voucher-color" class="adm-label">Màu sắc viền:</label>
+                            <input id="input-new-voucher-color" type="color" value="#06b6d4" class="adm-input" style="height: 48px; padding: 4px;">
+                        </div>
+                    </div>
+
+                    <div class="adm-form-group">
+                        <label for="input-new-voucher-desc" class="adm-label">Mô tả đặc quyền của phiếu:</label>
+                        <input id="input-new-voucher-desc" class="adm-input" placeholder="Ví dụ: Một chuyến du lịch biển cuối tuần, anh lo mọi thứ để em tận hưởng trọn vẹn!">
+                    </div>
+
+                    <button id="btn-create-voucher" class="adm-btn-primary" type="button">
+                        <span>Lưu Loại Phiếu Mới</span> ✨
+                    </button>
+                </div>
+            </section>
+
+            <!-- ══════ PANEL 4: LÁ THƯ SINH NHẬT BÍ MẬT & NGÀY KỶ NIỆM ══════ -->
+            <section id="tab-anniversary" class="adm-panel">
+                <!-- KHỐI 1: SOẠN THẢO THÔNG ĐIỆP LÁ THƯ SINH NHẬT -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>💌</span> Soạn Thảo Lá Thư Chúc Mừng Sinh Nhật Bí Mật Của Tris</h2>
+                    </div>
+
+                    <div class="letter-lock-notice">
+                        <div class="lock-notice-icon">🔒</div>
+                        <div class="lock-notice-text">
+                            <strong>Chế Độ Khóa Hẹn Giờ Tuyệt Mật: 00:00 Ngày 14/10</strong>
+                            <p>
+                                Thông điệp Tris soạn tại đây sẽ được lưu trữ an toàn. Trên trang web chính của bạn gái, bức thư hoàn toàn bị khóa ẩn (không có nút xem trước). 
+                                <strong>Đúng 00:00:00 ngày 14/10</strong>, hệ thống sẽ tự động kích hoạt, bắn pháo hoa và mở tung bức thiệp này lên màn hình của bạn gái!
+                            </p>
+                            <div class="adm-countdown-live" style="margin-top: 10px; font-weight: 700; color: #fbbf24;">
+                                ⏳ Thời gian đếm ngược đến 00:00 ngày 14/10: <span id="admin-bday-countdown">Đang tính toán...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="adm-form-row">
+                        <div class="adm-form-group">
+                            <label for="input-bday-to" class="adm-label">Lời mở đầu / Gửi đến (To):</label>
+                            <input id="input-bday-to" class="adm-input" placeholder="Ví dụ: Gửi người yêu thương nhất của anh 💕" value="Gửi người yêu thương nhất của anh 💕">
+                        </div>
+                        <div class="adm-form-group">
+                            <label for="input-bday-title" class="adm-label">Tiêu đề thiệp chúc mừng sinh nhật:</label>
+                            <input id="input-bday-title" class="adm-input" placeholder="Ví dụ: Chúc Mừng Sinh Nhật Người Yêu Của Anh! 🎂💖" value="Chúc Mừng Sinh Nhật Người Yêu Của Anh! 🎂💖">
+                        </div>
+                    </div>
+
+                    <div class="adm-form-group">
+                        <label for="input-bday-msg" class="adm-label">Nội dung bức thư tình cảm (Tris gửi trọn yêu thương vào đây - xuống dòng thoải mái):</label>
+                        <textarea id="input-bday-msg" class="adm-textarea" style="min-height: 180px; line-height: 1.8;" placeholder="Nhập tâm tư, lời chúc sinh nhật ấm áp gửi bạn gái (hỗ trợ xuống dòng nhiều đoạn)...">Hôm nay là ngày 14/10 — ngày tuyệt vời nhất vì đã mang một công chúa ngọt ngào đến bên cuộc đời anh.
+
+Cảm ơn em đã luôn ở đây, cùng anh đi qua bao thăng trầm, thắp sáng thế giới của anh bằng nụ cười dịu dàng của em.
+
+Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có anh bên cạnh chở che. Anh yêu em nhất trên đời! 💕</textarea>
+                    </div>
+
+                    <div class="adm-form-group">
+                        <label for="input-bday-sign" class="adm-label">Chữ ký / Lời kết yêu thương (Sign):</label>
+                        <input id="input-bday-sign" class="adm-input" placeholder="Ví dụ: Yêu em mãi mãi, Tris 💖" value="Yêu em mãi mãi, Tris 💖">
+                    </div>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+                        <button id="btn-save-anniversary" class="adm-btn-primary" type="button">
+                            <span>Lưu Thông Điệp Bức Thư</span> 💾💌
+                        </button>
+                        <button id="btn-admin-preview-letter" class="adm-btn-secondary" type="button">
+                            <span>Xem Thử Lá Thư (Chỉ Dành Riêng Cho Tris)</span> 👁️✨
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KHỐI 2: THIẾT LẬP NGÀY HẸN HÒ & SINH NHẬT -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>💑</span> Cài Đặt Ngày Hẹn Hò & Mốc Sinh Nhật</h2>
+                    </div>
+                    <p class="adm-card-desc">Đồng hồ tình yêu đếm chính xác từng ngày, giờ, phút, giây bắt đầu từ ngày hai bạn hẹn hò.</p>
+
+                    <div class="adm-form-row">
+                        <div class="adm-form-group">
+                            <label for="input-anniversary-date" class="adm-label">Ngày bắt đầu hẹn hò (Bắt đầu từ 14/08/2026):</label>
+                            <input id="input-anniversary-date" type="date" value="2026-08-14" class="adm-input">
+                            <small id="dating-duration-hint" style="color: #34d399; font-size: 0.85rem; margin-top: 4px; display: block;">Đang tính số ngày yêu...</small>
+                        </div>
+                        <div class="adm-form-group">
+                            <label for="input-bday-day" class="adm-label">Ngày sinh nhật (Ngày):</label>
+                            <input id="input-bday-day" type="number" min="1" max="31" value="14" class="adm-input">
+                        </div>
+                        <div class="adm-form-group">
+                            <label for="input-bday-month" class="adm-label">Tháng sinh nhật (Tháng):</label>
+                            <input id="input-bday-month" type="number" min="1" max="12" value="10" class="adm-input">
+                        </div>
+                    </div>
+
+                    <button id="btn-save-dates" class="adm-btn-primary" type="button">
+                        <span>Lưu Ngày Kỷ Niệm</span> 💾⏱️
+                    </button>
+                </div>
+            </section>
+
+            <!-- ══════ PANEL 5: BÌNH HOA TÌNH YÊU ══════ -->
+            <section id="tab-garden" class="adm-panel">
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>💐</span> Quản Trị Bình Hoa Tích Lũy</h2>
+                    </div>
+                    <p class="adm-card-desc">Trạng thái bình hoa hiện tại trên trình duyệt: <strong id="admin-flower-count-display" style="color: #34d399;">Đang kiểm tra...</strong></p>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button id="btn-ensure-5-flowers" class="adm-btn-primary" type="button">
+                            <span>Đảm bảo có đủ 5 đóa hoa nở rộ</span> 🌺
+                        </button>
+                        <button id="btn-admin-add-flower" class="adm-btn-secondary" type="button">
+                            <span>Tặng thêm 1 đóa hoa bất ngờ</span> 🌸
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Xem Thử Lá Thư Riêng Trong Admin (Trang chính của bạn gái vẫn khóa 100%) -->
+    <div id="admin-modal-letter" class="adm-preview-modal" hidden>
+        <div class="adm-preview-backdrop" id="admin-preview-backdrop"></div>
+        <div class="adm-preview-dialog">
+            <button class="adm-preview-close" id="btn-close-admin-preview" type="button" aria-label="Đóng">&times;</button>
+            <div class="adm-preview-cake">🎂</div>
+            <div class="adm-preview-tag">Bức Thư Sinh Nhật Bí Mật Từ Tris 🌸 (Bản Xem Trước)</div>
+            <p id="adm-preview-to" class="adm-preview-to">Gửi người yêu thương nhất của anh 💕</p>
+            <h2 id="adm-preview-title" class="adm-preview-title">Chúc Mừng Sinh Nhật Người Yêu Của Anh!</h2>
+            <div class="adm-preview-stars">✨ 🎈 💖 🎈 ✨</div>
+            <div id="adm-preview-msg" class="adm-preview-msg"></div>
+            <p id="adm-preview-sign" class="adm-preview-sign">Yêu em mãi mãi, Tris 💖</p>
+            <div style="margin-top: 20px; text-align: center;">
+                <button id="btn-admin-preview-confirm" class="adm-btn-primary" type="button">Đóng Bản Xem Thử</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS CỦA HỆ THỐNG -->
+    <script src="js/love-anniversary.js"></script>
+    <script src="js/flower-garden.js"></script>
+    <script src="js/friendship-coupons.js"></script>
+    <script src="js/cheer-up.js"></script>
+    <script src="js/goodnight.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════ */
 
 const CheerUp = (() => {
-    const cheerAdvices = [
+    const defaultAdvices = [
         'Nếu hôm nay có điều gì làm bạn phiền lòng, bạn cứ tựa vào vai tôi mà thở phào nhé. Dù thế nào đi nữa, tôi vẫn luôn ở đây yêu thương và chở che cho bạn!',
         'Lời dặn của tôi dành cho người yêu: Đừng để bản thân héo úa nha bạn! Hãy uống ngay một ly nước mát, ăn một món bạn thích, tôi xót bạn lắm đấy!',
         'Bạn không cần phải gồng mình hoàn hảo đâu. Trong mắt tôi, bạn đã là người tuyệt vời và đáng yêu nhất rồi. Cứ tự tin là chính mình nhé, có tôi thương bạn!',
@@ -14,9 +14,29 @@ const CheerUp = (() => {
         'Mọi chuyện rồi sẽ êm đẹp thôi người thương ơi. Dù ngày nắng hay ngày mưa, tôi mãi mãi là hậu phương vững chắc nhất của bạn!'
     ];
 
+    const STORAGE_KEY = 'cozy_admin_cheer_advices';
+
+    function getAdvices() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
+        } catch (e) {}
+        return defaultAdvices;
+    }
+
+    function setAdvices(list) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {}
+    }
+
     let lastIndex = -1;
 
     function getRandomAdvice() {
+        const cheerAdvices = getAdvices();
         let newIndex;
         do {
             newIndex = Math.floor(Math.random() * cheerAdvices.length);
@@ -98,5 +118,7 @@ const CheerUp = (() => {
         });
     }
 
-    return { init, openModal };
+    return { init, openModal, getAdvices, setAdvices, defaultAdvices };
 })();
+
+window.CheerUp = CheerUp;

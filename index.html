@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Góc Nhỏ Tình Yêu Của Bạn & Tôi 🌸</title>
-    <meta name="description" content="Không gian tình yêu ngọt ngào và ấm áp dành cho bạn — người yêu dấu của tôi. Mỗi ngày nở một đóa hoa, quay phiếu yêu thương và chúc nhau ngủ ngoan.">
+    <meta name="description"
+        content="Không gian tình yêu ngọt ngào và ấm áp dành cho bạn — người yêu dấu của tôi. Mỗi ngày nở một đóa hoa, quay phiếu yêu thương và chúc nhau ngủ ngoan.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Background Canvas Hiệu ứng lấp lánh nhẹ nhàng -->
     <canvas id="bg-canvas"></canvas>
@@ -23,14 +28,17 @@
                 <span class="logo__text">Bạn & Tôi</span>
             </div>
             <div class="header__actions">
-                <button id="btn-theme-toggle" class="pill-btn pill-btn--theme" type="button" aria-label="Chuyển chế độ tối hoặc sáng" title="Chuyển đổi giao diện Sáng / Tối">
+                <button id="btn-theme-toggle" class="pill-btn pill-btn--theme" type="button"
+                    aria-label="Chuyển chế độ tối hoặc sáng" title="Chuyển đổi giao diện Sáng / Tối">
                     <span id="theme-toggle-icon" class="theme-icon">🌙</span>
                     <span id="theme-toggle-label" class="theme-label">Tối</span>
                 </button>
-                <button id="btn-header-ambient" class="pill-btn pill-btn--ambient" type="button" aria-label="Bật hộp âm thanh bình yên">
+                <button id="btn-header-ambient" class="pill-btn pill-btn--ambient" type="button"
+                    aria-label="Bật hộp âm thanh bình yên">
                     <span>Âm thanh 🎵</span>
                 </button>
-                <button id="btn-header-cheer" class="pill-btn pill-btn--sun" type="button" aria-label="Nhận lời khuyên vui vẻ">
+                <button id="btn-header-cheer" class="pill-btn pill-btn--sun" type="button"
+                    aria-label="Nhận lời khuyên vui vẻ">
                     <span>Nạp yêu thương ☀️</span>
                 </button>
                 <button id="btn-header-night" class="pill-btn pill-btn--moon" type="button" aria-label="Chúc ngủ ngon">
@@ -41,22 +49,105 @@
     </header>
 
     <main class="main-content">
+        <!-- ══════════════ 0. HÀNH TRÌNH YÊU NHAU & NGÀY KỶ NIỆM ══════════════ -->
+        <section class="card love-anniversary-section">
+            <div class="section-badge">💖 Hành trình yêu dấu của Bạn & Tôi</div>
+            <h2 class="anniversary-main-title">Mỗi Giây Phút Bên Bạn Đều Là Món Quà Ngọt Ngào Nhất</h2>
+
+            <div class="anniversary-grid">
+                <!-- Cột 1: Đếm ngày hẹn hò (14/8) -->
+                <div class="anniversary-card anniversary-card--dating">
+                    <div class="anniversary-card-header">
+                        <span class="anniversary-icon heartbeat">💓</span>
+                        <div class="anniversary-title-box">
+                            <h3 class="anniversary-title">Ngày Hẹn Hò & Yêu Nhau</h3>
+                            <span class="anniversary-sub">Bắt đầu từ ngày 14/08</span>
+                        </div>
+                    </div>
+
+                    <div class="love-days-display">
+                        <span class="love-days-big" id="love-days-count">0</span>
+                        <span class="love-days-unit">Ngày Yêu</span>
+                    </div>
+
+                    <div class="love-ticker-box">
+                        <span class="ticker-label">Thời gian chính xác:</span>
+                        <div class="ticker-units">
+                            <span class="ticker-unit"><strong id="love-hours-count">00</strong><small>Giờ</small></span>
+                            <span class="ticker-colon">:</span>
+                            <span class="ticker-unit"><strong id="love-mins-count">00</strong><small>Phút</small></span>
+                            <span class="ticker-colon">:</span>
+                            <span class="ticker-unit"><strong id="love-secs-count">00</strong><small>Giây</small></span>
+                        </div>
+                    </div>
+                    <p class="anniversary-quote">"Cảm ơn vì đã đến và sưởi ấm thế giới của tôi mỗi ngày!" 💕</p>
+                </div>
+
+                <!-- Cột 2: Hẹn ngày sinh nhật bạn gái (14/10) -->
+                <div class="anniversary-card anniversary-card--birthday">
+                    <div class="anniversary-card-header">
+                        <span class="anniversary-icon">🎂</span>
+                        <div class="anniversary-title-box">
+                            <h3 class="anniversary-title">Sinh Nhật Bạn Gái</h3>
+                            <span class="anniversary-sub">Ngày 14 tháng 10 đặc biệt</span>
+                        </div>
+                    </div>
+
+                    <!-- Banner khi đúng ngày sinh nhật -->
+                    <div id="bday-active-banner" class="bday-active-banner" hidden>
+                        <div class="bday-balloon-anim">🎈 🎂 🎉</div>
+                        <h4 class="bday-active-title">HÔM NAY LÀ SINH NHẬT CỦA BẠN GÁI!</h4>
+                        <p class="bday-active-desc">Chúc người tôi yêu nhất sinh nhật ngập tràn nụ cười, ấm áp và hạnh
+                            phúc!</p>
+                        <button id="btn-open-bday-card" class="btn-primary btn-bday-sparkle" type="button">
+                            Mở Thiệp Sinh Nhật Ngay 🎁
+                        </button>
+                    </div>
+
+                    <!-- Đồng hồ đếm ngược sinh nhật khi chưa tới ngày -->
+                    <div id="bday-countdown-box" class="bday-countdown-box">
+                        <span class="countdown-label">Đếm ngược đến sinh nhật 14/10:</span>
+                        <div class="bday-countdown-grid">
+                            <div class="bday-box">
+                                <span class="bday-num" id="bday-days-count">00</span>
+                                <span class="bday-lbl">Ngày</span>
+                            </div>
+                            <div class="bday-box">
+                                <span class="bday-num" id="bday-hours-count">00</span>
+                                <span class="bday-lbl">Giờ</span>
+                            </div>
+                            <div class="bday-box">
+                                <span class="bday-num" id="bday-mins-count">00</span>
+                                <span class="bday-lbl">Phút</span>
+                            </div>
+                            <div class="bday-box">
+                                <span class="bday-num" id="bday-secs-count">00</span>
+                                <span class="bday-lbl">Giây</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ══════════════ 1. BÌNH HOA TÌNH YÊU NỞ MỖI NGÀY ══════════════ -->
         <section class="card garden-section">
             <div class="section-badge">💐 Bình hoa tình yêu của hai đứa mình</div>
             <h1 class="garden-title">Mỗi Ngày Bạn Đến, Một Bông Hoa Tình Yêu Nở</h1>
             <p class="garden-desc">
-                Cứ mỗi ngày người yêu ghé thăm góc nhỏ này, tôi sẽ trồng tặng bạn một đóa hoa mới chứa chan tình cảm. Hãy chạm vào từng bông hoa để đọc lời nhắn yêu thương tôi gửi đến bạn nhé!
+                Cứ mỗi ngày người yêu ghé thăm góc nhỏ này, tôi sẽ trồng tặng bạn một đóa hoa mới chứa chan tình cảm.
+                Hãy chạm vào từng bông hoa để đọc lời nhắn yêu thương tôi gửi đến bạn nhé!
             </p>
 
             <div class="garden-streak">
                 <div class="streak-badge">
                     <span class="streak-icon">✨</span>
-                    <span id="streak-text">Hôm nay là ngày đầu tiên bạn ghé thăm tôi!</span>
+                    <span id="streak-text">Hai đứa mình đã cùng nhau chăm sóc bình hoa được 5 ngày rồi đó! Yêu bạn rất
+                        nhiều! 💕</span>
                 </div>
                 <div class="streak-count-box">
                     <span>Số hoa đã nở:</span>
-                    <strong id="flower-count">1</strong> 🌺
+                    <strong id="flower-count">5</strong> 🌺
                 </div>
             </div>
 
@@ -75,9 +166,6 @@
                     <span>Tưới hoa hôm nay</span>
                     <span class="btn-icon">💧</span>
                 </button>
-                <button id="btn-demo-next-day" class="btn-secondary" type="button" title="Thử nghiệm thêm ngày mới để xem hoa nở thêm">
-                    <span>Ghé ngày tiếp theo (Thử nghiệm) ✨</span>
-                </button>
             </div>
         </section>
 
@@ -87,7 +175,8 @@
                 <div class="healing-icon">☀️</div>
                 <div class="healing-info">
                     <h2>Cần Năng Lượng & Yêu Thương?</h2>
-                    <p>Bấm vào đây mỗi khi bạn thấy mệt mỏi, người yêu của bạn luôn ở đây với nụ cười và vòng tay chở che!</p>
+                    <p>Bấm vào đây mỗi khi bạn thấy mệt mỏi, người yêu của bạn luôn ở đây với nụ cười và vòng tay chở
+                        che!</p>
                 </div>
                 <button id="btn-open-cheer" class="btn-action btn-action--sun" type="button">
                     Nạp yêu thương ngay 🌻
@@ -98,7 +187,8 @@
                 <div class="healing-icon">🌙</div>
                 <div class="healing-info">
                     <h2>Người Yêu Chuẩn Bị Đi Ngủ Chưa?</h2>
-                    <p>Hãy để tôi ôm chặt bạn vào lòng, cùng ngắm bầu trời đầy sao và chúc bạn một giấc ngủ thật ngoan.</p>
+                    <p>Hãy để tôi ôm chặt bạn vào lòng, cùng ngắm bầu trời đầy sao và chúc bạn một giấc ngủ thật ngoan.
+                    </p>
                 </div>
                 <button id="btn-open-night" class="btn-action btn-action--moon" type="button">
                     Chúc người yêu ngủ ngon 💫
@@ -113,7 +203,8 @@
                 <div>
                     <h2 class="plant-title">Cây Tình Yêu Của Bạn & Tôi</h2>
                     <p class="plant-desc">
-                        Tình cảm của chúng mình cũng như chậu cây này vậy, mỗi ngày bạn và tôi cùng chăm sóc, sưởi ấm để cây lớn dần và nở hoa rực rỡ nhé người yêu!
+                        Tình cảm của chúng mình cũng như chậu cây này vậy, mỗi ngày bạn và tôi cùng chăm sóc, sưởi ấm để
+                        cây lớn dần và nở hoa rực rỡ nhé người yêu!
                     </p>
                 </div>
                 <span id="plant-level-badge" class="plant-level-badge">Cấp 1</span>
@@ -168,7 +259,8 @@
             <div class="section-badge">💖 Lắng nghe người tôi yêu</div>
             <h2 class="mood-title">Hôm Nay Người Yêu Của Tôi Cảm Thấy Thế Nào?</h2>
             <p class="mood-desc">
-                Dù bạn đang vui vẻ hay có chút mệt mỏi, hãy chọn một biểu tượng để tôi được gửi gắm lời vỗ về và vòng tay ấm áp đến bạn nhé!
+                Dù bạn đang vui vẻ hay có chút mệt mỏi, hãy chọn một biểu tượng để tôi được gửi gắm lời vỗ về và vòng
+                tay ấm áp đến bạn nhé!
             </p>
 
             <div class="mood-selector" role="group" aria-label="Chọn tâm trạng hôm nay">
@@ -215,7 +307,9 @@
                 <div>
                     <h2 class="coupons-title">Vòng Quay & Ví Phiếu Tình Yêu Của Chúng Ta</h2>
                     <p class="coupons-desc">
-                        Hãy quay vòng quay để trúng những tấm phiếu yêu thương từ tôi (nụ hôn, cái ôm, miễn trừ giận dỗi...). Các phiếu trúng sẽ được cất vào <strong>Ví Tình Yêu</strong> bên dưới để bạn có thể rút ra đòi tôi thực hiện bất cứ lúc nào nhé người yêu! 💕
+                        Hãy quay vòng quay để trúng những tấm phiếu yêu thương từ tôi (nụ hôn, cái ôm, miễn trừ giận
+                        dỗi...). Các phiếu trúng sẽ được cất vào <strong>Ví Tình Yêu</strong> bên dưới để bạn có thể rút
+                        ra đòi tôi thực hiện bất cứ lúc nào nhé người yêu! 💕
                     </p>
                 </div>
             </div>
@@ -250,10 +344,6 @@
                 <div id="coupons-grid" class="coupons-grid">
                     <!-- Render bằng JS -->
                 </div>
-
-                <div class="coupons-footer-actions">
-                    <button id="btn-reset-coupons" class="btn-secondary" type="button">Làm mới lại toàn bộ phiếu 🔄</button>
-                </div>
             </div>
         </section>
 
@@ -279,7 +369,8 @@
             <!-- Tab 1: Game Hái Hoa Rơi -->
             <div id="game-catch" class="game-panel active" role="tabpanel">
                 <div class="game-header">
-                    <p class="game-instruction">Dùng chuột hoặc ngón tay di chuyển chiếc giỏ để hứng các bông hoa tình yêu rơi nhé người yêu!</p>
+                    <p class="game-instruction">Dùng chuột hoặc ngón tay di chuyển chiếc giỏ để hứng các bông hoa tình
+                        yêu rơi nhé người yêu!</p>
                     <div class="game-stats">
                         <span>Điểm của bạn: <strong id="catch-score">0</strong></span>
                         <span>Kỷ lục: <strong id="catch-highscore">0</strong></span>
@@ -297,7 +388,8 @@
             <!-- Tab 2: Game Lật Thẻ Tìm Cặp -->
             <div id="game-memory" class="game-panel" role="tabpanel" hidden>
                 <div class="game-header">
-                    <p class="game-instruction">Lật mở từng thẻ bài để tìm các cặp biểu tượng hẹn hò giống nhau của hai đứa mình!</p>
+                    <p class="game-instruction">Lật mở từng thẻ bài để tìm các cặp biểu tượng hẹn hò giống nhau của hai
+                        đứa mình!</p>
                     <div class="game-stats">
                         <span>Số lượt lật: <strong id="memory-moves">0</strong></span>
                         <span>Đã tìm thấy: <strong id="memory-matches">0</strong> / 6 cặp</span>
@@ -314,7 +406,8 @@
             <!-- Tab 3: Game Vòng Quay Niềm Vui -->
             <div id="game-wheel" class="game-panel" role="tabpanel" hidden>
                 <div class="game-header">
-                    <p class="game-instruction">Hôm nay hai đứa mình làm gì cho vui nhỉ? Hãy quay để nhận một gợi ý hẹn hò từ tôi nhé!</p>
+                    <p class="game-instruction">Hôm nay hai đứa mình làm gì cho vui nhỉ? Hãy quay để nhận một gợi ý hẹn
+                        hò từ tôi nhé!</p>
                 </div>
                 <div class="wheel-box">
                     <div class="wheel-pointer">🔻</div>
@@ -331,7 +424,12 @@
 
     <!-- Footer ấm áp -->
     <footer class="footer">
-        <p>Góc nhỏ tình yêu được tạo ra dành riêng cho bạn — Yêu bạn và mong bạn luôn bình yên, hạnh phúc mỗi ngày! 🌿💖</p>
+        <p>Góc nhỏ tình yêu được tạo ra dành riêng cho bạn — Yêu bạn và mong bạn luôn bình yên, hạnh phúc mỗi ngày! 🌿💖
+        </p>
+        <div class="footer-admin-link-box">
+            <a href="admin.html" class="admin-portal-link" title="Khu vực quản trị riêng của Tris">🔐 Quản trị của
+                Tris</a>
+        </div>
     </footer>
 
     <!-- ══════════════ MODALS / POPUPS ══════════════ -->
@@ -345,7 +443,8 @@
             <h2 class="night-title">Chúc Người Yêu Của Tôi Ngủ Thật Ngon</h2>
             <div class="night-stars">✨ 🌟 💫 🌟 ✨</div>
             <p id="night-message" class="night-message">
-                Hôm nay người yêu của tôi đã vất vả nhiều rồi. Hãy gác lại hết những âu lo ngoài kia, để tôi ôm bạn vào lòng và ru bạn chìm vào giấc mơ dịu êm nhé. Tôi yêu bạn rất nhiều!
+                Hôm nay người yêu của tôi đã vất vả nhiều rồi. Hãy gác lại hết những âu lo ngoài kia, để tôi ôm bạn vào
+                lòng và ru bạn chìm vào giấc mơ dịu êm nhé. Tôi yêu bạn rất nhiều!
             </p>
             <div class="night-card-footer">
                 <button id="btn-another-night-msg" class="btn-secondary btn-secondary--night" type="button">
@@ -366,7 +465,8 @@
             <div class="cheer-sun">🌻</div>
             <span class="cheer-tag">Nạp yêu thương cho bạn</span>
             <p id="cheer-message" class="cheer-message">
-                Nếu hôm nay có gì không như ý, bạn hãy cứ thở phào một cái rồi tựa vào vai tôi nhé. Mặt trời vẫn mọc, hoa vẫn nở, và tôi luôn ở đây chở che cho người tôi yêu!
+                Nếu hôm nay có gì không như ý, bạn hãy cứ thở phào một cái rồi tựa vào vai tôi nhé. Mặt trời vẫn mọc,
+                hoa vẫn nở, và tôi luôn ở đây chở che cho người tôi yêu!
             </p>
             <div class="cheer-actions">
                 <button id="btn-more-cheer" class="btn-primary" type="button">Gửi thêm yêu thương cho tôi đi ☀️</button>
@@ -416,14 +516,40 @@
             <div class="ambient-controls">
                 <div class="volume-slider-group">
                     <label for="ambient-volume">Âm lượng:</label>
-                    <input type="range" id="ambient-volume" min="0" max="1" step="0.05" value="0.5" aria-label="Âm lượng nhạc nền">
+                    <input type="range" id="ambient-volume" min="0" max="1" step="0.05" value="0.5"
+                        aria-label="Âm lượng nhạc nền">
                 </div>
                 <button id="btn-stop-ambient" class="btn-secondary" type="button">Tắt âm thanh 🔇</button>
             </div>
         </div>
     </div>
 
+    <!-- 5. Modal Bức Thư Chúc Mừng Sinh Nhật Bạn Gái (14/10) -->
+    <div id="modal-birthday" class="modal modal--birthday" hidden>
+        <div class="modal__backdrop" id="bday-backdrop"></div>
+        <div class="modal__dialog modal__dialog--birthday">
+            <button class="modal__close" id="btn-close-bday" type="button" aria-label="Đóng">&times;</button>
+            <div class="birthday-cake-icon">🎂</div>
+            <div class="birthday-tag">Bức Thư Sinh Nhật Bí Mật Từ vtt 🌸</div>
+            <p id="bday-modal-to" class="birthday-letter-to">Gửi người yêu thương nhất của anh 💕</p>
+            <h2 id="bday-modal-title" class="bday-modal-title">Chúc Mừng Sinh Nhật Người Yêu Của Anh!</h2>
+            <div class="birthday-stars">✨ 🎈 💖 🎈 ✨</div>
+            <div id="bday-modal-message" class="bday-modal-message">
+                Hôm nay là ngày 14/10 — ngày tuyệt vời nhất vì đã mang một công chúa ngọt ngào đến bên cuộc đời anh. Cảm
+                ơn em đã luôn ở đây, cùng anh đi qua bao thăng trầm. Chúc em tuổi mới luôn rực rỡ, bình an và hạnh phúc
+                bên anh nhé. Anh yêu em nhất trên đời! 💕
+            </div>
+            <p id="bday-modal-sign" class="birthday-letter-sign">Yêu em mãi mãi, Tris 💖</p>
+            <div class="birthday-actions">
+                <button id="btn-bday-accept" class="btn-primary btn-primary--bday" type="button">
+                    Em nhận bức thư và tình yêu của anh 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
+    <script src="js/love-anniversary.js"></script>
     <script src="js/flower-garden.js"></script>
     <script src="js/goodnight.js"></script>
     <script src="js/cheer-up.js"></script>
@@ -434,4 +560,5 @@
     <script src="js/minigames.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

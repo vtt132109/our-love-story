@@ -3,13 +3,32 @@
    ═══════════════════════════════════════════════════════ */
 
 const Goodnight = (() => {
-    const nightMessages = [
+    const defaultMessages = [
         'Hôm nay người thương của tôi đã vất vả nhiều rồi. Hãy gác lại hết âu lo, để tôi ôm bạn vào giấc ngủ thật êm đềm nhé. Trong tim tôi lúc nào cũng chỉ có bạn!',
         'Đêm đã khuya rồi, mắt người yêu tôi cũng mỏi rồi đúng không? Tắt màn hình, kéo chăn ấm lên nào. Chúc bạn có những giấc mơ ngập tràn hoa thơm và hình bóng hai đứa mình nhé!',
         'Dù hôm nay có mệt mỏi thế nào, bạn cũng đã làm rất tuyệt vời rồi. Tôi tự hào về bạn và yêu bạn nhiều lắm. Cho phép mình ngủ một giấc thật sâu trong sự chở che của tôi nhé. Yêu bạn!',
         'Gửi đến người yêu dấu ngàn nụ hôn êm ái và một cái ôm siết thật chặt. Mong mọi muộn phiền tan biến, chỉ còn lại sự ấm áp và bình yên bên bạn đêm nay.',
         'Nhắm mắt lại nào bạn yêu của tôi. Hãy để những vì sao đêm nay thay tôi trông chừng giấc ngủ cho bạn. Tôi chúc bạn ngủ thật ngon, mai thức dậy lại có tôi thương bạn thật nhiều!'
     ];
+
+    const STORAGE_KEY = 'cozy_admin_night_messages';
+
+    function getMessages() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
+        } catch (e) {}
+        return defaultMessages;
+    }
+
+    function setMessages(list) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {}
+    }
 
     let currentMsgIndex = 0;
 
@@ -27,16 +46,19 @@ const Goodnight = (() => {
     }
 
     function nextMessage() {
-        currentMsgIndex = (currentMsgIndex + 1) % nightMessages.length;
+        const list = getMessages();
+        currentMsgIndex = (currentMsgIndex + 1) % list.length;
         renderMessage();
     }
 
     function renderMessage() {
         const msgEl = document.getElementById('night-message');
+        const list = getMessages();
+        if (currentMsgIndex >= list.length) currentMsgIndex = 0;
         if (msgEl) {
             msgEl.style.opacity = 0;
             setTimeout(() => {
-                msgEl.textContent = nightMessages[currentMsgIndex];
+                msgEl.textContent = list[currentMsgIndex];
                 msgEl.style.opacity = 1;
             }, 200);
         }
@@ -86,5 +108,7 @@ const Goodnight = (() => {
         document.getElementById('btn-another-night-msg')?.addEventListener('click', nextMessage);
     }
 
-    return { init, openModal };
+    return { init, openModal, getMessages, setMessages, defaultMessages };
 })();
+
+window.Goodnight = Goodnight;

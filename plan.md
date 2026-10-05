@@ -74,3 +74,33 @@
 - [x] **Vệt Chuột Nở Hoa & Lấp Lánh (Interactive Petal & Sparkle Trail):**
   - Tự động sinh vệt cánh hoa anh đào và ánh sao li ti khi di chuột hoặc lướt cảm ứng, đạt chuẩn 60FPS không giật lag.
 
+---
+
+## 💖 5. Đợt Nâng Cấp Tình Yêu & Bảng Điều Khiển Admin (Mới Hoàn Thành)
+- [x] **Cố định 5 bông hoa cho 5 ngày đầu tiên & gỡ nút thử nghiệm:**
+  - Khởi tạo mặc định 5 bông hoa đang khoe sắc trong bình kèm thông điệp riêng cho từng ngày.
+  - Tự động nâng cấp dữ liệu người dùng nếu đang có ít hơn 5 hoa.
+  - Loại bỏ hoàn toàn nút demo `#btn-demo-next-day`, đưa nút "Tưới hoa hôm nay 💧" về vị trí trang nhã trung tâm.
+- [x] **Đếm ngày hẹn hò bắt đầu từ 14/08:**
+  - Đồng hồ thời gian thực (ticker) cập nhật từng giây: `X ngày : Y giờ : Z phút : S giây` kèm hiệu ứng nhịp đập trái tim (*pulsing heartbeat*).
+- [x] **Hẹn ngày sinh nhật bạn gái (14/10) & Chế độ sinh nhật đặc biệt:**
+  - Đếm ngược chính xác từng ngày, giờ, phút, giây đến 14/10.
+  - Kích hoạt chế độ sinh nhật bùng nổ: pháo hoa giấy (*confetti*), bóng bay lơ lửng, popup thiệp chúc mừng sinh nhật ngọt ngào.
+- [x] **Nâng cấp Vòng Quay & Ví Phiếu Tình Yêu:**
+  - Bỏ nút reset phiếu để bảo toàn ví của bạn gái.
+  - Mở rộng kho voucher lên 16 loại phong phú, lãng mạn.
+  - Áp dụng cơ chế **3 ngày được quay 1 lần (Rate Limiting)** có hiển thị trạng thái và thời gian chờ cụ thể.
+- [x] **Trang Quản Trị Bí Mật Của Tris (`admin.html`) & Lá Thư Sinh Nhật Khóa Hẹn Giờ:**
+  - Bảo mật bằng mã PIN 4 số (Mặc định `1408`).
+  - Quản lý danh sách câu khuyên yêu thương (thêm/sửa/xóa).
+  - Quản lý lời chúc ngủ ngon ban đêm (thêm/sửa/xóa).
+  - Bơm/Airdrop voucher trực tiếp vào ví của bạn gái bất kỳ lúc nào.
+  - Thưởng thêm lượt quay vòng quay hoặc mở khóa quay ngay lập tức.
+  - Tùy chỉnh ngày bắt đầu hẹn hò (14/8/2026 - hiện đếm chính xác 52 ngày yêu) và ngày sinh nhật (14/10).
+  - **Khu vực soạn thảo lá thư chúc mừng sinh nhật bí mật:**
+    - Cho phép Tris nhập đầy đủ: Lời mở đầu / Người nhận (`To`), Tiêu đề thiệp, Nội dung tâm thư (hỗ trợ xuống dòng nhiều đoạn), và Chữ ký kết thư (`Sign`).
+    - **Cơ chế khóa hẹn giờ nghiêm ngặt:** Trên trang người yêu hoàn toàn ẩn bức thư (không có bất kỳ nút xem trước nào).
+    - **Đúng 00:00:00 ngày 14/10**, hệ thống tự động bung mở toàn màn hình bức thư cùng hiệu ứng pháo hoa rực rỡ!
+    - Trang Admin cung cấp bản xem thử (`admin-modal-letter`) dành riêng cho Tris kiểm tra trước độ hoàn mỹ của lá thư.
+
+
