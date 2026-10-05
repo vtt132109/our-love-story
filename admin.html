@@ -77,6 +77,9 @@
                 <button class="adm-tab" data-target="tab-garden" type="button">
                     <span>💐 Bình Hoa Tình Yêu</span>
                 </button>
+                <button class="adm-tab" data-target="tab-mood" type="button">
+                    <span>💖 Nhật Ký Cảm Xúc</span>
+                </button>
             </nav>
 
             <!-- ══════ PANEL 1: LỜI KHUYÊN YÊU THƯƠNG ══════ -->
@@ -333,6 +336,48 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
                     </div>
                 </div>
             </section>
+
+            <!-- ══════ PANEL 6: NHẬT KÝ CẢM XÚC CỦA BẠN GÁI ══════ -->
+            <section id="tab-mood" class="adm-panel">
+                <!-- Thẻ tâm trạng hôm nay -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>💖</span> Tâm Trạng Hôm Nay Của Bạn Gái</h2>
+                        <button id="btn-refresh-mood" class="adm-btn-secondary" type="button" style="padding: 6px 14px; font-size: 0.85rem;">
+                            <span>Làm Mới</span> 🔄
+                        </button>
+                    </div>
+                    <p class="adm-card-desc">Ghi nhận thời gian thực khi bạn gái bộc bạch cảm xúc trên trang web.</p>
+
+                    <div id="admin-today-mood-card" class="adm-today-mood-box">
+                        <!-- Render bằng JS -->
+                    </div>
+                </div>
+
+                <!-- Thẻ Lịch sử cảm xúc theo từng ngày -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>📜</span> Nhật Ký Cảm Xúc Từng Ngày (30 Ngày Gần Nhất)</h2>
+                        <span id="admin-mood-count-badge" class="adm-badge-count">0 ngày</span>
+                    </div>
+                    <p class="adm-card-desc">Lịch sử những ngày bạn gái đã ghé thăm và bộc bạch tâm trạng với Tris.</p>
+
+                    <div id="admin-mood-history-list" class="adm-items-list">
+                        <!-- Render danh sách ngày qua JS -->
+                    </div>
+                </div>
+
+                <!-- Thống kê tâm trạng chung -->
+                <div class="adm-card">
+                    <div class="adm-card-header">
+                        <h2 class="adm-card-title"><span>📊</span> Phân Tích & Thấu Hiểu Cảm Xúc Người Yêu</h2>
+                    </div>
+                    <p class="adm-card-desc">Tổng hợp các cung bậc cảm xúc của bạn gái trong những lần ghé thăm khu vườn.</p>
+                    <div id="admin-mood-stats-grid" class="adm-mood-stats-grid">
+                        <!-- Render thống kê qua JS -->
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -360,6 +405,7 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
     <script src="js/friendship-coupons.js?v=2.2"></script>
     <script src="js/cheer-up.js?v=2.2"></script>
     <script src="js/goodnight.js?v=2.2"></script>
+    <script src="js/mood-tracker.js?v=2.2"></script>
     <script src="js/admin.js?v=2.2"></script>
 </body>
 </html>

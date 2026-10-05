@@ -101,6 +101,11 @@
     - Cho phép Tris nhập đầy đủ: Lời mở đầu / Người nhận (`To`), Tiêu đề thiệp, Nội dung tâm thư (hỗ trợ xuống dòng nhiều đoạn), và Chữ ký kết thư (`Sign`).
     - **Cơ chế khóa hẹn giờ nghiêm ngặt:** Trên trang người yêu hoàn toàn ẩn bức thư (không có bất kỳ nút xem trước nào).
     - **Đúng 00:00:00 ngày 14/10**, hệ thống tự động bung mở toàn màn hình bức thư cùng hiệu ứng pháo hoa rực rỡ!
-    - Trang Admin cung cấp bản xem thử (`admin-modal-letter`) dành riêng cho Tris kiểm tra trước độ hoàn mỹ của lá thư.
+  - **Nhật Ký Cảm Xúc Của Bạn Gái (Mood History Tracker):**
+    - Trang Admin cung cấp Tab **"💖 Nhật Ký Cảm Xúc"** giúp Tris theo dõi sát sao tâm trạng của người yêu.
+    - Hiển thị tâm trạng hôm nay của bạn gái thời gian thực kèm khung **"💡 Gợi ý yêu thương cho Tris"** để anh kịp thời quan tâm, vỗ về.
+    - Dòng thời gian lịch sử lưu trữ đến 30 ngày (Ngày, giờ, biểu tượng cảm xúc và lời dặn dò).
+    - Bảng thống kê trực quan tần suất các cung bậc cảm xúc (Vui vẻ, mệt mỏi, an yên, cần cái ôm, đầy năng lượng).
+
 
 

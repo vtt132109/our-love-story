@@ -739,4 +739,172 @@ body {
     margin-bottom: 20px;
 }
 
+/* ─── 8. PANEL NHẬT KÝ CẢM XÚC CỦA BẠN GÁI ─── */
+.adm-today-mood-box {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    border: 1px solid var(--adm-card-border);
+    border-radius: var(--adm-radius);
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.today-mood-emoji-big {
+    font-size: 4.2rem;
+    filter: drop-shadow(0 6px 16px rgba(245, 158, 11, 0.35));
+    animation: floatHeart 2.2s infinite ease-in-out;
+    flex-shrink: 0;
+}
+
+.today-mood-info {
+    flex: 1;
+    min-width: 260px;
+}
+
+.today-mood-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #fed7aa;
+    margin-bottom: 4px;
+}
+
+.today-mood-time {
+    font-size: 0.88rem;
+    color: var(--adm-text-muted);
+    margin-bottom: 12px;
+}
+
+.today-mood-quote {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 3px solid #f59e0b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: #f1f5f9;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.today-mood-advice-for-tris {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.14) 0%, rgba(219, 39, 119, 0.14) 100%);
+    border: 1px dashed rgba(244, 63, 94, 0.45);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #fecdd3;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.today-mood-advice-for-tris strong {
+    color: #fda4af;
+}
+
+/* Lịch sử từng ngày */
+.adm-mood-history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px 20px;
+    gap: 16px;
+    transition: all 0.25s ease;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.adm-mood-history-item:hover {
+    border-color: rgba(251, 146, 60, 0.5);
+    background: rgba(30, 41, 59, 0.95);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.hist-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hist-emoji-badge {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+}
+
+.hist-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.hist-title {
+    font-weight: 700;
+    color: #f8fafc;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hist-time {
+    font-size: 0.82rem;
+    color: var(--adm-text-muted);
+    margin-top: 2px;
+}
+
+.hist-quote-snippet {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    font-style: italic;
+    background: rgba(15, 23, 42, 0.5);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 2px solid rgba(251, 146, 60, 0.4);
+    max-width: 480px;
+}
+
+/* Thống kê cảm xúc */
+.adm-mood-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.adm-mood-stat-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.adm-mood-stat-box:hover {
+    transform: translateY(-2px);
+    border-color: rgba(251, 146, 60, 0.4);
+}
+
+.stat-box-emoji {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+}
+
+.stat-box-count {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #fbbf24;
+    line-height: 1.2;
+}
+
+.stat-box-name {
+    font-size: 0.82rem;
+    color: var(--adm-text-muted);
+    margin-top: 2px;
+}
+
+
 

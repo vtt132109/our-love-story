@@ -63,18 +63,30 @@ const MoodTracker = (() => {
         if (!mood) return;
 
         const data = getData();
-        const todayStr = new Date().toLocaleDateString('vi-VN');
+        const now = new Date();
+        const todayStr = now.toLocaleDateString('vi-VN');
+        const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
         data.todayMood = moodKey;
         data.todayDate = todayStr;
+        data.todayTime = timeStr;
 
-        // Lưu vào lịch sử (tối đa 7 ngày gần nhất)
+        // Lưu vào lịch sử (giữ tối đa 30 ngày)
+        const record = {
+            date: todayStr,
+            time: timeStr,
+            mood: moodKey,
+            emoji: mood.emoji,
+            label: mood.label,
+            response: mood.response
+        };
+
         const existingIdx = data.history.findIndex(h => h.date === todayStr);
         if (existingIdx >= 0) {
-            data.history[existingIdx] = { date: todayStr, mood: moodKey, emoji: mood.emoji };
+            data.history[existingIdx] = record;
         } else {
-            data.history.unshift({ date: todayStr, mood: moodKey, emoji: mood.emoji });
-            if (data.history.length > 7) data.history.pop();
+            data.history.unshift(record);
+            if (data.history.length > 30) data.history.pop();
         }
 
         saveData(data);
@@ -144,5 +156,15 @@ const MoodTracker = (() => {
         });
     }
 
-    return { init, selectMood };
+    return { 
+        init, 
+        selectMood, 
+        getData, 
+        saveData, 
+        MOOD_DATA, 
+        render 
+    };
 })();
+
+window.MoodTracker = MoodTracker;
+

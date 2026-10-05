@@ -748,6 +748,170 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
         });
     }
 
+    // ─── 8. QUẢN LÝ NHẬT KÝ CẢM XÚC CỦA BẠN GÁI ───
+    const MOOD_KEY = 'cozy_mood_tracker_v1';
+
+    const MOOD_INFO = {
+        happy: {
+            label: 'Rất vui vẻ',
+            emoji: '😊',
+            color: '#f59e0b',
+            advice: 'Em ấy đang rất vui và yêu đời! Tris hãy tranh thủ nhắn một câu khen ngợi ngọt ngào để nụ cười của em nở rộ hơn nữa nhé! 🌟'
+        },
+        tired: {
+            label: 'Hơi mệt mỏi',
+            emoji: '🥺',
+            color: '#8b5cf6',
+            advice: 'Em ấy đang thấm mệt sau một ngày dài! Tris nên gọi điện hỏi han, nhắc em uống nước ấm, nghỉ ngơi sớm và nhớ dặn em buông hết âu lo nhé! 🍵'
+        },
+        calm: {
+            label: 'An yên, nhẹ nhõm',
+            emoji: '🍃',
+            color: '#10b981',
+            advice: 'Em ấy đang có một ngày bình yên, dịu êm. Cùng em tâm sự nhẹ nhàng trước khi ngủ sẽ giúp tình cảm thêm gắn kết đấy! 🕊️'
+        },
+        hug: {
+            label: 'Cần một cái ôm',
+            emoji: '🫂',
+            color: '#f43f5e',
+            advice: 'Báo động tình yêu: Em ấy đang rất cần một cái ôm vỗ về! Hãy gửi ngay những lời thì thầm ấm áp hoặc gặp em để ôm thật chặt nhé! 💕'
+        },
+        energetic: {
+            label: 'Đầy năng lượng',
+            emoji: '⚡',
+            color: '#ea580c',
+            advice: 'Người yêu của Tris đang tràn đầy nhiệt huyết! Hãy cổ vũ em và cùng chia sẻ những mục tiêu thú vị nhé! 🚀'
+        }
+    };
+
+    function getMoodData() {
+        try {
+            const raw = localStorage.getItem(MOOD_KEY);
+            if (raw) return JSON.parse(raw);
+        } catch (e) {}
+        return {
+            todayMood: null,
+            todayDate: null,
+            todayTime: null,
+            history: []
+        };
+    }
+
+    function renderMoodManager() {
+        const data = getMoodData();
+        const todayStr = new Date().toLocaleDateString('vi-VN');
+        const isSelectedToday = data.todayMood && data.todayDate === todayStr;
+
+        // 1. Thẻ tâm trạng hôm nay
+        const todayCard = document.getElementById('admin-today-mood-card');
+        if (todayCard) {
+            if (isSelectedToday && data.todayMood) {
+                const info = MOOD_INFO[data.todayMood] || {
+                    label: data.todayMood,
+                    emoji: '💖',
+                    advice: 'Hãy gửi một lời chúc ngọt ngào đến em ấy nhé!'
+                };
+                const timeStr = data.todayTime ? ` lúc ${data.todayTime}` : '';
+
+                todayCard.innerHTML = `
+                    <div class="today-mood-emoji-big">${info.emoji}</div>
+                    <div class="today-mood-info">
+                        <h3 class="today-mood-title">Hôm nay em ấy cảm thấy: <span style="color: ${info.color || '#fed7aa'};">${info.label}</span></h3>
+                        <p class="today-mood-time">🕒 Ghi nhận vào ngày ${data.todayDate}${timeStr}</p>
+                        <div class="today-mood-advice-for-tris">
+                            <strong>💡 Gợi ý yêu thương cho Tris:</strong>
+                            <p style="margin-top: 4px;">${info.advice}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                todayCard.innerHTML = `
+                    <div class="today-mood-emoji-big" style="animation: none; opacity: 0.7;">💭</div>
+                    <div class="today-mood-info">
+                        <h3 class="today-mood-title" style="color: #94a3b8;">Hôm nay bạn gái chưa chọn cảm xúc</h3>
+                        <p class="today-mood-time">Ngày: ${todayStr}</p>
+                        <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6;">
+                            Khi người yêu ghé thăm web và chọn một biểu tượng tâm trạng hôm nay, hệ thống sẽ tự động cập nhật ngay tại đây để Tris kịp thời thấu hiểu và sẻ chia nhé!
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        // 2. Lịch sử theo ngày
+        const histList = document.getElementById('admin-mood-history-list');
+        const countBadge = document.getElementById('admin-mood-count-badge');
+        const history = data.history || [];
+
+        if (countBadge) {
+            countBadge.textContent = `${history.length} ngày đã ghi chép`;
+        }
+
+        if (histList) {
+            histList.innerHTML = '';
+            if (history.length === 0) {
+                histList.innerHTML = `
+                    <div style="text-align: center; padding: 30px; color: #94a3b8;">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">🌸</span>
+                        Chưa có dữ liệu cảm xúc nào được lưu trữ. Khi bạn gái bắt đầu bấm chọn tâm trạng, lịch sử 30 ngày sẽ hiện diện đầy đủ tại đây!
+                    </div>
+                `;
+            } else {
+                history.forEach(item => {
+                    const mood = MOOD_INFO[item.mood] || { label: item.label || item.mood, emoji: item.emoji || '💖' };
+                    const timeDisplay = item.time ? ` • ${item.time}` : '';
+                    const quoteDisplay = item.response ? `<div class="hist-quote-snippet">"${item.response}"</div>` : '';
+
+                    const row = document.createElement('div');
+                    row.className = 'adm-mood-history-item';
+                    row.innerHTML = `
+                        <div class="hist-left">
+                            <span class="hist-emoji-badge">${item.emoji || mood.emoji}</span>
+                            <div class="hist-details">
+                                <span class="hist-title">${mood.label}</span>
+                                <span class="hist-time">📅 ${item.date}${timeDisplay}</span>
+                            </div>
+                        </div>
+                        ${quoteDisplay}
+                    `;
+                    histList.appendChild(row);
+                });
+            }
+        }
+
+        // 3. Thống kê cảm xúc
+        const statsGrid = document.getElementById('admin-mood-stats-grid');
+        if (statsGrid) {
+            statsGrid.innerHTML = '';
+            const counts = { happy: 0, tired: 0, calm: 0, hug: 0, energetic: 0 };
+            history.forEach(item => {
+                if (counts[item.mood] !== undefined) {
+                    counts[item.mood]++;
+                }
+            });
+
+            Object.keys(MOOD_INFO).forEach(key => {
+                const info = MOOD_INFO[key];
+                const box = document.createElement('div');
+                box.className = 'adm-mood-stat-box';
+                box.innerHTML = `
+                    <div class="stat-box-emoji">${info.emoji}</div>
+                    <div class="stat-box-count">${counts[key] || 0}</div>
+                    <div class="stat-box-name">${info.label}</div>
+                `;
+                statsGrid.appendChild(box);
+            });
+        }
+    }
+
+    function initMoodManager() {
+        renderMoodManager();
+        document.getElementById('btn-refresh-mood')?.addEventListener('click', () => {
+            renderMoodManager();
+            showToast('Đã làm mới nhật ký cảm xúc của người yêu! 💖');
+        });
+    }
+
     function initDashboard() {
         initTabs();
         initCheerManager();
@@ -755,6 +919,7 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
         initVoucherManager();
         initAnniversarySettings();
         initGardenManager();
+        initMoodManager();
     }
 
     // Khởi động khi tải xong DOM
@@ -762,3 +927,4 @@ Chúc em tuổi mới luôn rực rỡ, bình an, hạnh phúc và mãi mãi có
         initPinAuth();
     });
 })();
+
